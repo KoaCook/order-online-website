@@ -1,6 +1,7 @@
 import Image from 'next/image';
-import React from 'react';
 import { FileText, Moon, ShoppingCart } from 'react-feather';
+import LanguageSwitcher from './LanguageSwitcher';
+import OrderTypeSwitcher from './OrderTypeSwitcher';
 
 const Header = () => {
     return (
@@ -14,27 +15,32 @@ const Header = () => {
                     className="!h-full !w-auto"
                 />
                 <div className="flex items-center">
+                    <OrderTypeSwitcher />
                     <button
                         type="button"
                         data-ripple-dark="true"
-                        className="h-10 min-w-10 flex items-center justify-center rounded-lg ml-2.5"
+                        className="min-h-10 min-w-10 flex items-center justify-center rounded-lg ml-2.5 ripple px-3"
+                    >
+                        <FileText />
+                        <span className="ml-1.5">Tra cứu đơn hàng</span>
+                    </button>
+
+                    <button
+                        type="button"
+                        data-ripple-dark="true"
+                        className="min-h-10 min-w-14 flex items-center justify-center rounded-lg ml-2.5 ripple px-3"
+                    >
+                        <ShoppingCart />
+                        <span className="ml-2.5">Giỏ hàng</span>
+                    </button>
+                    <button
+                        type="button"
+                        data-ripple-dark="true"
+                        className="min-h-10 min-w-10 flex items-center justify-center rounded-lg ml-2.5 ripple"
                     >
                         <Moon />
                     </button>
-                    <button
-                        type="button"
-                        data-ripple-dark="true"
-                        className="h-10 min-w-10 flex items-center justify-center rounded-lg ml-2.5"
-                    >
-                        <FileText />
-                    </button>
-                    <button
-                        type="button"
-                        data-ripple-dark="true"
-                        className="h-10 min-w-10 flex items-center justify-center rounded-lg ml-2.5"
-                    >
-                        <ShoppingCart />
-                    </button>
+                    <LanguageSwitcher />
                 </div>
             </div>
         </header>
