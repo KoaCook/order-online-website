@@ -12,6 +12,8 @@ module.exports = {
             boxShadow: {
                 fade: '0 3px 6px #e4e4e4',
                 menu: '0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12)',
+                'carousel-btn': 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
+                // 'carousel-btn': 'rgba(0, 0, 0, 0.1) 0px 4px 12px',
             },
             colors: {
                 primary: {
