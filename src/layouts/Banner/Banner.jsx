@@ -21,6 +21,8 @@ const Banner = () => {
             <Carousel
                 showThumbs={false}
                 autoPlay
+                infiniteLoop
+                interval={2500}
                 renderArrowPrev={(clickHandler, hasPrev) =>
                     hasPrev && (
                         <button
