@@ -8,6 +8,7 @@ module.exports = {
         extend: {
             maxWidth: {
                 xl: '1185px',
+                'category-nav': '850px',
             },
             boxShadow: {
                 fade: '0 3px 6px #e4e4e4',
