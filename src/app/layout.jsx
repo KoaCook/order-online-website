@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
         <html lang="vi">
             <body className={openSans.className}>
                 <Header />
-                <div className="content">{children}</div>
+                <div className="content pb-8">{children}</div>
             </body>
         </html>
     );
