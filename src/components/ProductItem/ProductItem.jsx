@@ -2,7 +2,7 @@ import React from 'react';
 
 const ProductItem = () => {
     return (
-        <div className="w-full h-full rounded-md shadow-product-item bg-white overflow-hidden flex flex-col">
+        <div className="h-full rounded-md shadow-product-item bg-white overflow-hidden flex flex-col">
             <div className="w-full h-[135px] overflow-hidden">
                 <div
                     style={{ backgroundImage: 'url(/fallback_product_img.png)' }}

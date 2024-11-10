@@ -1,7 +1,8 @@
 import ProductItem from '@/components/ProductItem';
-import Banner from '@/layouts/Banner';
 import CategoriesNav from '@/layouts/CategoriesNav';
+import Banner from '@/layouts/Banner';
 import React from 'react';
+import ProductsCarousel from '@/components/ProductsCarousel';
 
 const HomePage = () => {
     return (
@@ -15,48 +16,16 @@ const HomePage = () => {
 
             <div className="mt-5">
                 <div className="mb-7.5">
-                    <h2 className="font-semibold text-2xl">Món Ăn Vặt</h2>
-                    <div className="mt-7 flex">
-                        <div className="w-1/5 mr-7.5">
-                            <ProductItem />
-                        </div>
-                        <div className="w-1/5 mr-7.5">
-                            <ProductItem />
-                        </div>
-                        <div className="w-1/5 mr-7.5">
-                            <ProductItem />
-                        </div>
-                        <div className="w-1/5 mr-7.5">
-                            <ProductItem />
-                        </div>
-                        <div className="w-1/5">
-                            <ProductItem />
-                        </div>
-                    </div>
-                    <div className="mt-7.5 flex items-center justify-center">
-                        <button className="border border-solid border-primary rounded-md h-10 px-4 text-sm text-primary ripple">
-                            XEM TẤT CẢ
-                        </button>
-                    </div>
+                    <ProductsCarousel />
                 </div>
                 <div className="mb-7.5">
                     <h2 className="font-semibold text-2xl">Món Ăn Vặt</h2>
-                    <div className="mt-7 flex">
-                        <div className="w-1/5 mr-7.5">
-                            <ProductItem />
-                        </div>
-                        <div className="w-1/5 mr-7.5">
-                            <ProductItem />
-                        </div>
-                        <div className="w-1/5 mr-7.5">
-                            <ProductItem />
-                        </div>
-                        <div className="w-1/5 mr-7.5">
-                            <ProductItem />
-                        </div>
-                        <div className="w-1/5">
-                            <ProductItem />
-                        </div>
+                    <div className="mt-7 grid grid-cols-5 gap-7.5">
+                        <ProductItem />
+                        <ProductItem />
+                        <ProductItem />
+                        <ProductItem />
+                        <ProductItem />
                     </div>
                     <div className="mt-7.5 flex items-center justify-center">
                         <button className="border border-solid border-primary rounded-md h-10 px-4 text-sm text-primary ripple">

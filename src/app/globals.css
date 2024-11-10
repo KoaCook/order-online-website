@@ -18,6 +18,10 @@
     }
 }
 
+.products-carousel .slick-list {
+    margin: 0 -15px;
+}
+
 /* Ripple effect */
 .ripple,
 .ripple-f5f5f5,

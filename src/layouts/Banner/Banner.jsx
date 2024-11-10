@@ -3,24 +3,14 @@
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'react-feather';
 import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 
 const Banner = () => {
-    const settings = {
-        dots: false,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplayInterval: 6000,
-        wrapAround: true,
-    };
-
     return (
         <div className="relative group">
             <Carousel
                 showThumbs={false}
                 autoPlay
+                stopOnHover
                 infiniteLoop
                 interval={2500}
                 renderArrowPrev={(clickHandler, hasPrev) =>
