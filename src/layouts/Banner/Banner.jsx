@@ -12,7 +12,7 @@ const Banner = () => {
                 autoPlay
                 stopOnHover
                 infiniteLoop
-                interval={2500}
+                interval={3500}
                 renderArrowPrev={(clickHandler, hasPrev) =>
                     hasPrev && (
                         <button
