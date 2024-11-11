@@ -4,6 +4,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import { Open_Sans } from 'next/font/google';
 import Header from '@/layouts/Header';
 import './globals.css';
+import Footer from '@/layouts/Footer';
 
 export const metadata = {
     title: 'Create Next App',
@@ -21,7 +22,8 @@ export default function RootLayout({ children }) {
         <html lang="vi">
             <body className={openSans.className}>
                 <Header />
-                <div className="content pb-8">{children}</div>
+                <div className="content pb-14">{children}</div>
+                <Footer />
             </body>
         </html>
     );
