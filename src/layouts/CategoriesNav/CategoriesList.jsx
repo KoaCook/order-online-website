@@ -1,7 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 const categories = [
     'Tất cả',
@@ -18,6 +18,8 @@ const categories = [
 
 const CategoriesList = () => {
     const scrollRef = useRef(null);
+    const categoryRefs = useRef([]); // Array of refs for each category button
+    const [selectedCategory, setSelectedCategory] = useState('Tất cả'); // Initialize with the default active category
     let isDragging = false;
     let startX, scrollLeft;
 
@@ -31,7 +33,7 @@ const CategoriesList = () => {
         if (!isDragging) return;
         e.preventDefault();
         const x = e.pageX - scrollRef.current.offsetLeft;
-        const walk = x - startX; // Increase scroll speed
+        const walk = x - startX;
         scrollRef.current.scrollLeft = scrollLeft - walk;
     };
 
@@ -39,7 +41,16 @@ const CategoriesList = () => {
         isDragging = false;
     };
 
-    const active = 'Tất cả';
+    const handleCategoryClick = (category, index) => {
+        setSelectedCategory(category);
+
+        // Scroll the clicked category into view
+        categoryRefs.current[index].scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'center', // Center the clicked item horizontally
+        });
+    };
 
     return (
         <div
@@ -53,10 +64,13 @@ const CategoriesList = () => {
             {categories.map((category, i) => (
                 <button
                     key={i}
+                    ref={el => (categoryRefs.current[i] = el)} // Assign each button to the refs array
+                    onClick={() => handleCategoryClick(category, i)}
                     className={clsx(
                         'px-4 mr-2 rounded-md h-10 text-sm font-normal whitespace-nowrap outline-none',
-                        category !== active && 'bg-[#f5f5f5] text-black ripple-f5f5f5',
-                        category === active && 'bg-primary text-white ripple-primary'
+                        category !== selectedCategory &&
+                            'bg-[#f5f5f5] text-black ripple-unactive-category-btn',
+                        category === selectedCategory && 'bg-primary text-white ripple-primary'
                     )}
                 >
                     {category}
