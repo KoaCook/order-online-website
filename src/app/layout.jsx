@@ -1,10 +1,11 @@
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import { Open_Sans } from 'next/font/google';
-import Header from '@/layouts/Header';
-import './globals.css';
+import CartFixedBtn from '@/layouts/CartFixedBtn';
 import Footer from '@/layouts/Footer';
+import Header from '@/layouts/Header';
+import { Open_Sans } from 'next/font/google';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
+import './globals.css';
 
 export const metadata = {
     title: 'Create Next App',
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
                 <Header />
                 <div className="content pb-14">{children}</div>
                 <Footer />
+                <CartFixedBtn />
             </body>
         </html>
     );

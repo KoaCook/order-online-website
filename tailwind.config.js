@@ -15,6 +15,8 @@ module.exports = {
                 menu: '0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12)',
                 'carousel-btn': 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
                 'product-item': '0 0 6px rgba(0,0,0,.08)',
+                'fixed-cart-btn':
+                    '0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12)',
             },
             colors: {
                 primary: {
