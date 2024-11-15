@@ -29,6 +29,7 @@ module.exports = {
             },
             spacing: {
                 7.5: '30px',
+                drawer: '428px',
             },
         },
     },

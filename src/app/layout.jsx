@@ -2,6 +2,7 @@ import CartFixedBtn from '@/layouts/CartFixedBtn';
 import Footer from '@/layouts/Footer';
 import Header from '@/layouts/Header';
 import { Open_Sans } from 'next/font/google';
+import 'react-modern-drawer/dist/index.css';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';

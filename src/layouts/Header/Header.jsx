@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import { FileText, Moon, ShoppingCart } from 'react-feather';
+import { FileText, Moon } from 'react-feather';
+import Cart from './Cart';
 import LanguageSwitcher from './LanguageSwitcher';
 import OrderTypeSwitcher from './OrderTypeSwitcher';
 
@@ -25,14 +26,7 @@ const Header = () => {
                         <span className="ml-1.5">Tra cứu đơn hàng</span>
                     </button>
 
-                    <button
-                        type="button"
-                        data-ripple-dark="true"
-                        className="min-h-10 min-w-14 flex items-center justify-center rounded-lg ml-2.5 ripple px-3"
-                    >
-                        <ShoppingCart />
-                        <span className="ml-2.5">Giỏ hàng</span>
-                    </button>
+                    <Cart />
                     <button
                         type="button"
                         data-ripple-dark="true"
