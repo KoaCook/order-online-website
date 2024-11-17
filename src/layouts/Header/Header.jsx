@@ -1,7 +1,8 @@
 import Image from 'next/image';
-import { FileText, Moon } from 'react-feather';
+import { Moon } from 'react-feather';
 import Cart from './Cart';
 import LanguageSwitcher from './LanguageSwitcher';
+import OrderHistory from './OrderHistory';
 import OrderTypeSwitcher from './OrderTypeSwitcher';
 
 const Header = () => {
@@ -17,15 +18,7 @@ const Header = () => {
                 />
                 <div className="flex items-center">
                     <OrderTypeSwitcher />
-                    <button
-                        type="button"
-                        data-ripple-dark="true"
-                        className="min-h-10 min-w-10 flex items-center justify-center rounded-lg ml-2.5 ripple px-3"
-                    >
-                        <FileText />
-                        <span className="ml-1.5">Tra cứu đơn hàng</span>
-                    </button>
-
+                    <OrderHistory />
                     <Cart />
                     <button
                         type="button"
