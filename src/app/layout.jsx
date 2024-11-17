@@ -7,6 +7,9 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import './globals.css';
+import dynamic from 'next/dynamic';
+
+const ProductDetails = dynamic(() => import('@/components/ProductDetails'));
 
 export const metadata = {
     title: 'Create Next App',
@@ -27,6 +30,7 @@ export default function RootLayout({ children }) {
                 <div className="content pb-14">{children}</div>
                 <Footer />
                 <CartFixedBtn />
+                <ProductDetails />
             </body>
         </html>
     );
