@@ -1,35 +1,50 @@
 import useLayoutStore from '@/stores/useLayoutStore';
+import clsx from 'clsx';
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { XCircle } from 'react-feather';
 
 const ProductDetailsModal = () => {
+    const [isVisible, setIsVisible] = useState(false);
     const closeProductModal = useLayoutStore(state => state.closeProductModal);
     const modalRef = useRef();
+
+    const handleClose = () => {
+        setIsVisible(false);
+        setTimeout(() => {
+            closeProductModal();
+        }, [250]);
+    };
 
     useEffect(() => {
         const handleClickOutside = event => {
             if (modalRef.current && !modalRef.current.contains(event.target)) {
-                closeProductModal();
+                handleClose();
             }
         };
 
         document.addEventListener('mousedown', handleClickOutside);
 
+        setIsVisible(true);
+
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [closeProductModal]);
+    }, []);
 
     return (
         <div className="fixed top-0 right-0 bottom-0 left-0 z-[100] flex items-center justify-center">
             <div className="absolute top-0 left-0 w-full h-full bg-[rgb(33,33,33)] opacity-[0.46] -z-10"></div>
             <div
-                className="relative z-10 w-full max-w-[800px] max-h-[90%] m-6 shadow-product-details-modal bg-[#f9f9f9] rounded-md"
+                className={clsx(
+                    'relative z-10 w-full max-w-[800px] max-h-[90%] m-6 shadow-product-details-modal bg-[#f9f9f9] rounded-md transition-all duration-[250ms]',
+                    isVisible && 'opacity-100 scale-100',
+                    !isVisible && 'opacity-0 scale-90'
+                )}
                 ref={modalRef}
             >
                 <button
-                    onClick={closeProductModal}
+                    onClick={handleClose}
                     className="absolute top-4 right-3 w-6 h-6 rounded-full"
                 >
                     <XCircle className="text-[rgba(0,0,0,.54)]" />
