@@ -1,21 +1,25 @@
 'use client';
 
+import useLayoutStore from '@/stores/useLayoutStore';
 import clsx from 'clsx';
 import React from 'react';
 import { ShoppingCart, XCircle } from 'react-feather';
 import Drawer from 'react-modern-drawer';
 
 const Cart = () => {
-    const [isOpen, setIsOpen] = React.useState(false);
-
-    const toggleDrawer = () => {
-        setIsOpen(prevState => !prevState);
-    };
+    // const [isOpenCartDrawer, openCartDrawer, closeCartDrawer] = useLayoutStore(state => [
+    //     state.isOpenCartDrawer,
+    //     state.openCartDrawer,
+    //     state.closeCartDrawer,
+    // ]);
+    const isOpenCartDrawer = useLayoutStore(state => state.isOpenCartDrawer);
+    const openCartDrawer = useLayoutStore(state => state.openCartDrawer);
+    const closeCartDrawer = useLayoutStore(state => state.closeCartDrawer);
 
     return (
         <>
             <button
-                onClick={toggleDrawer}
+                onClick={openCartDrawer}
                 type="button"
                 data-ripple-dark="true"
                 className="min-h-10 min-w-14 flex items-center justify-center rounded-lg ml-2.5 ripple px-3"
@@ -24,10 +28,15 @@ const Cart = () => {
                 <span className="ml-2.5">Giỏ hàng</span>
             </button>
 
-            <Drawer open={isOpen} onClose={toggleDrawer} direction="right" className="!w-drawer">
+            <Drawer
+                open={isOpenCartDrawer}
+                onClose={closeCartDrawer}
+                direction="right"
+                className="!w-drawer"
+            >
                 <div className="relative flex flex-col h-full">
                     <button
-                        onClick={toggleDrawer}
+                        onClick={closeCartDrawer}
                         className="absolute top-4 right-3 w-6 h-6 rounded-full"
                     >
                         <XCircle className="text-[rgba(0,0,0,.54)]" />
