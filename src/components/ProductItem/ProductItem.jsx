@@ -10,6 +10,7 @@ const ProductItem = () => {
         <div className="h-full rounded-md shadow-product-item bg-white overflow-hidden flex flex-col">
             <div className="w-full h-[135px] overflow-hidden">
                 <div
+                    onClick={openProductModal}
                     style={{ backgroundImage: 'url(/fallback_product_img.png)' }}
                     className="w-full h-full bg-center bg-cover transition-transform hover:scale-110 ease-in-out duration-500 cursor-pointer"
                 ></div>

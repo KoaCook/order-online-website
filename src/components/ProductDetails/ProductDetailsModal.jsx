@@ -13,7 +13,7 @@ const ProductDetailsModal = () => {
         setIsVisible(false);
         setTimeout(() => {
             closeProductModal();
-        }, [250]);
+        }, [300]);
     };
 
     useEffect(() => {
@@ -34,12 +34,18 @@ const ProductDetailsModal = () => {
 
     return (
         <div className="fixed top-0 right-0 bottom-0 left-0 z-[100] flex items-center justify-center">
-            <div className="absolute top-0 left-0 w-full h-full bg-[rgb(33,33,33)] opacity-[0.46] -z-10"></div>
             <div
                 className={clsx(
-                    'relative z-10 w-full max-w-[800px] max-h-[90%] m-6 shadow-product-details-modal bg-[#f9f9f9] rounded-md transition-all duration-[250ms]',
+                    'absolute top-0 left-0 w-full h-full bg-[rgba(33,33,33,0.46)] -z-10 transition-all duration-300 ease-ease',
+                    isVisible && 'opacity-100',
+                    !isVisible && 'opacity-0'
+                )}
+            ></div>
+            <div
+                className={clsx(
+                    'relative z-10 w-full max-w-[800px] max-h-[90%] m-6 shadow-product-details-modal bg-[#f9f9f9] rounded-md transition-all ease-ease duration-300',
                     isVisible && 'opacity-100 scale-100',
-                    !isVisible && 'opacity-0 scale-90'
+                    !isVisible && 'opacity-0 scale-75'
                 )}
                 ref={modalRef}
             >
