@@ -2,8 +2,7 @@
 
 import useLayoutStore from '@/stores/useLayoutStore';
 import clsx from 'clsx';
-import React from 'react';
-import { ShoppingCart, XCircle } from 'react-feather';
+import { ShoppingCart, X } from 'react-feather';
 import Drawer from 'react-modern-drawer';
 
 const Cart = () => {
@@ -37,9 +36,9 @@ const Cart = () => {
                 <div className="relative flex flex-col h-full">
                     <button
                         onClick={closeCartDrawer}
-                        className="absolute top-4 right-3 w-6 h-6 rounded-full"
+                        className="absolute top-4 right-3 w-6 h-6 flex items-center justify-center rounded-full bg-[#bcbdbe]"
                     >
-                        <XCircle className="text-[rgba(0,0,0,.54)]" />
+                        <X size={16} className="text-[#f9f9f9]" />
                     </button>
                     <div className="px-5 text-xl font-semibold">
                         <div className="py-3.5 border-b border-solid border-[rgba(0,0,0,.12)]">

@@ -1,7 +1,7 @@
 import useLayoutStore from '@/stores/useLayoutStore';
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
-import { Minus, Plus, XCircle } from 'react-feather';
+import { Minus, Plus, X } from 'react-feather';
 
 const ProductDetailsModal = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -50,9 +50,9 @@ const ProductDetailsModal = () => {
             >
                 <button
                     onClick={handleClose}
-                    className="absolute top-4 right-3 w-6 h-6 rounded-full"
+                    className="absolute top-4 right-3 w-6 h-6 flex items-center justify-center rounded-full bg-[#bcbdbe]"
                 >
-                    <XCircle className="text-[rgba(0,0,0,.54)]" />
+                    <X size={16} className="text-[#f9f9f9]" />
                 </button>
                 <div className="p-5 bg-[#f9f9f9]">
                     <div className="flex mb-7.5">
