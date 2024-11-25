@@ -38,7 +38,7 @@ const Cart = () => {
                         onClick={closeCartDrawer}
                         className="absolute top-4 right-3 w-6 h-6 flex items-center justify-center rounded-full bg-[#bcbdbe]"
                     >
-                        <X size={16} className="text-[#f9f9f9]" />
+                        <X size={16} className="text-paper" />
                     </button>
                     <div className="px-5 text-xl font-semibold">
                         <div className="py-3.5 border-b border-solid border-[rgba(0,0,0,.12)]">

@@ -25,6 +25,7 @@ module.exports = {
                     DEFAULT: '#eb393f',
                     light: '#f28b8c',
                 },
+                paper: '#f9f9f9',
             },
             transitionTimingFunction: {
                 ease: 'ease',

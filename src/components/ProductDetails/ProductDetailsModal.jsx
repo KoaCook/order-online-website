@@ -42,7 +42,7 @@ const ProductDetailsModal = () => {
             ></div>
             <div
                 className={clsx(
-                    'relative z-10 w-full max-w-[800px] max-h-[90%] m-6 shadow-product-details-modal bg-[#f9f9f9] rounded-md transition-all ease-ease duration-300 overflow-hidden',
+                    'relative z-10 w-full max-w-[800px] max-h-[90%] m-6 shadow-product-details-modal bg-paper rounded-md transition-all ease-ease duration-300 overflow-hidden',
                     isVisible && 'opacity-100 scale-100',
                     !isVisible && 'opacity-0 scale-75'
                 )}
@@ -52,9 +52,9 @@ const ProductDetailsModal = () => {
                     onClick={handleClose}
                     className="absolute top-4 right-3 w-6 h-6 flex items-center justify-center rounded-full bg-[#bcbdbe]"
                 >
-                    <X size={16} className="text-[#f9f9f9]" />
+                    <X size={16} className="text-paper" />
                 </button>
-                <div className="p-5 bg-[#f9f9f9]">
+                <div className="p-5 bg-paper">
                     <div className="flex mb-7.5">
                         <div
                             style={{ backgroundImage: 'url(/fallback_product_img.png)' }}
