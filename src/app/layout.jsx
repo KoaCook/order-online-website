@@ -26,11 +26,13 @@ export default function RootLayout({ children }) {
     return (
         <html lang="vi">
             <body className={openSans.className}>
-                <Header />
-                <div className="content pb-14">{children}</div>
-                <Footer />
-                <CartFixedBtn />
-                <ProductDetails />
+                <div className="main min-h-screen flex flex-col">
+                    <Header />
+                    <div className="content flex-1 flex flex-col">{children}</div>
+                    <Footer />
+                    <CartFixedBtn />
+                    <ProductDetails />
+                </div>
             </body>
         </html>
     );

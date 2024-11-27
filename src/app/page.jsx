@@ -1,12 +1,11 @@
 import ProductItem from '@/components/ProductItem';
-import CategoriesNav from '@/layouts/CategoriesNav';
-import Banner from '@/layouts/Banner';
-import React from 'react';
 import ProductsCarousel from '@/components/ProductsCarousel';
+import Banner from '@/layouts/Banner';
+import CategoriesNav from '@/layouts/CategoriesNav';
 
 const HomePage = () => {
     return (
-        <div className="max-w-xl mx-auto px-3">
+        <div className="max-w-xl mx-auto px-3 pb-14">
             <div className="pt-6 pb-7">
                 <Banner />
             </div>
