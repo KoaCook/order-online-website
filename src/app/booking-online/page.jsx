@@ -1,4 +1,5 @@
 import { GroupIcon, PhoneIcon, UserIcon } from '@/components/Icons';
+import { Minus, Plus, Trash } from 'react-feather';
 
 const BookingOnlinePage = () => {
     return (
@@ -84,13 +85,115 @@ const BookingOnlinePage = () => {
                         <div className="mb-3.5 text-sm italic text-[#707070]">
                             Vui lòng đặt trước món để nhà hàng có thể chuẩn bị tốt hơn.
                         </div>
-                        <div className="flex-1 flex items-center justify-center h-full">
+                        {/* <div className="flex-1 flex items-center justify-center h-full">
                             <div
                                 style={{ backgroundImage: 'url(/empty_cart.png)' }}
                                 className="w-[150px] h-[150px] bg-cover bg-center bg-no-repeat"
                             ></div>
+                        </div> */}
+                        <div className="flex-1 overflow-y-scroll px-3.5 -mx-3.5 booking-online-products-list">
+                            <div className="mb-2.5">
+                                <div className="flex items-center mb-5 justify-between">
+                                    <div className="text-xl font-semibold w-[250px]">
+                                        Trái cây tươi (Đĩa)
+                                    </div>
+                                    <button className="h-10 w-10 text-[rgba(0,0,0,.54)] flex items-center justify-center ripple rounded-full">
+                                        <Trash size={18} />
+                                    </button>
+                                </div>
+                                <div className="flex items-center justify-between">
+                                    <div className="flex items-center">
+                                        <button className="flex items-center justify-center h-[34px] w-[34px] rounded-full text-primary border border-solid border-primary ripple">
+                                            <Minus size={18} />
+                                        </button>
+                                        <div className="w-[65px] text-center bg-transparent text-xl font-bold">
+                                            1
+                                        </div>
+                                        <button className="flex items-center justify-center h-[34px] w-[34px] rounded-full text-primary border border-solid border-primary ripple">
+                                            <Plus size={18} />
+                                        </button>
+                                    </div>
+                                    <div className="text-base mr-1">90.000 đ</div>
+                                </div>
+                                <hr className="my-4 border-t border-solid border-[rgba(0,0,0,.12)] w-full" />
+                            </div>
+                            <div className="mb-2.5">
+                                <div className="flex items-center mb-5 justify-between">
+                                    <div className="text-xl font-semibold w-[250px]">
+                                        Trái cây tươi (Đĩa)
+                                    </div>
+                                    <button className="h-10 w-10 text-[rgba(0,0,0,.54)] flex items-center justify-center ripple rounded-full">
+                                        <Trash size={18} />
+                                    </button>
+                                </div>
+                                <div className="flex items-center justify-between">
+                                    <div className="flex items-center">
+                                        <button className="flex items-center justify-center h-[34px] w-[34px] rounded-full text-primary border border-solid border-primary ripple">
+                                            <Minus size={18} />
+                                        </button>
+                                        <div className="w-[65px] text-center bg-transparent text-xl font-bold">
+                                            1
+                                        </div>
+                                        <button className="flex items-center justify-center h-[34px] w-[34px] rounded-full text-primary border border-solid border-primary ripple">
+                                            <Plus size={18} />
+                                        </button>
+                                    </div>
+                                    <div className="text-base mr-1">90.000 đ</div>
+                                </div>
+                                <hr className="my-4 border-t border-solid border-[rgba(0,0,0,.12)] w-full" />
+                            </div>
+                            <div className="mb-2.5">
+                                <div className="flex items-center mb-5 justify-between">
+                                    <div className="text-xl font-semibold w-[250px]">
+                                        Trái cây tươi (Đĩa)
+                                    </div>
+                                    <button className="h-10 w-10 text-[rgba(0,0,0,.54)] flex items-center justify-center ripple rounded-full">
+                                        <Trash size={18} />
+                                    </button>
+                                </div>
+                                <div className="flex items-center justify-between">
+                                    <div className="flex items-center">
+                                        <button className="flex items-center justify-center h-[34px] w-[34px] rounded-full text-primary border border-solid border-primary ripple">
+                                            <Minus size={18} />
+                                        </button>
+                                        <div className="w-[65px] text-center bg-transparent text-xl font-bold">
+                                            1
+                                        </div>
+                                        <button className="flex items-center justify-center h-[34px] w-[34px] rounded-full text-primary border border-solid border-primary ripple">
+                                            <Plus size={18} />
+                                        </button>
+                                    </div>
+                                    <div className="text-base mr-1">90.000 đ</div>
+                                </div>
+                                <hr className="my-4 border-t border-solid border-[rgba(0,0,0,.12)] w-full" />
+                            </div>
+                            <div className="mb-2.5">
+                                <div className="flex items-center mb-5 justify-between">
+                                    <div className="text-xl font-semibold w-[250px]">
+                                        Trái cây tươi (Đĩa)
+                                    </div>
+                                    <button className="h-10 w-10 text-[rgba(0,0,0,.54)] flex items-center justify-center ripple rounded-full">
+                                        <Trash size={18} />
+                                    </button>
+                                </div>
+                                <div className="flex items-center justify-between">
+                                    <div className="flex items-center">
+                                        <button className="flex items-center justify-center h-[34px] w-[34px] rounded-full text-primary border border-solid border-primary ripple">
+                                            <Minus size={18} />
+                                        </button>
+                                        <div className="w-[65px] text-center bg-transparent text-xl font-bold">
+                                            1
+                                        </div>
+                                        <button className="flex items-center justify-center h-[34px] w-[34px] rounded-full text-primary border border-solid border-primary ripple">
+                                            <Plus size={18} />
+                                        </button>
+                                    </div>
+                                    <div className="text-base mr-1">90.000 đ</div>
+                                </div>
+                                <hr className="my-4 border-t border-solid border-[rgba(0,0,0,.12)] w-full" />
+                            </div>
                         </div>
-                        <div className="flex items-center justify-between">
+                        <div className="flex items-center justify-between mt-5">
                             <div className="flex items-center">
                                 <div className="text-base font-semibold uppercase mr-1">Tổng</div>
                                 <div className="bg-primary text-white rounded-md min-w-[60px] h-6 text-center text-base leading-[24px]">
