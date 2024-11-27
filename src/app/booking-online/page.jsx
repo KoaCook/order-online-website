@@ -79,7 +79,7 @@ const BookingOnlinePage = () => {
                         <div className="mb-4 flex items-center justify-between">
                             <div className="text-base uppercase">MÓN ĐẶT TRƯỚC</div>
                             <button className="border border-solid border-primary rounded-md h-10 px-4 text-sm text-primary ripple">
-                                XEM TẤT CẢ
+                                THÊM MÓN
                             </button>
                         </div>
                         <div className="mb-3.5 text-sm italic text-[#707070]">
