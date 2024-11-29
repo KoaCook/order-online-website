@@ -1,15 +1,9 @@
-import CartFixedBtn from '@/layouts/CartFixedBtn';
-import Footer from '@/layouts/Footer';
-import Header from '@/layouts/Header';
 import { Open_Sans } from 'next/font/google';
 import 'react-modern-drawer/dist/index.css';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import './globals.css';
-import dynamic from 'next/dynamic';
-
-const ProductDetails = dynamic(() => import('@/components/ProductDetails'));
 
 export const metadata = {
     title: 'Create Next App',
@@ -25,15 +19,7 @@ const openSans = Open_Sans({
 export default function RootLayout({ children }) {
     return (
         <html lang="vi">
-            <body className={openSans.className}>
-                <div className="main min-h-screen flex flex-col">
-                    <Header />
-                    <div className="content flex-1 flex flex-col">{children}</div>
-                    <Footer />
-                    <CartFixedBtn />
-                    <ProductDetails />
-                </div>
-            </body>
+            <body className={openSans.className}>{children}</body>
         </html>
     );
 }
