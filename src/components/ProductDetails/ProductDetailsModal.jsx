@@ -6,6 +6,7 @@ import { Minus, Plus, X } from 'react-feather';
 const ProductDetailsModal = () => {
     const [isVisible, setIsVisible] = useState(false);
     const closeProductModal = useLayoutStore(state => state.closeProductModal);
+    const isOpenProductModal = useLayoutStore(state => state.isOpenProductModal);
     const modalRef = useRef();
 
     const handleClose = () => {
@@ -16,6 +17,15 @@ const ProductDetailsModal = () => {
     };
 
     useEffect(() => {
+        if (isOpenProductModal) {
+            // Trigger initial animation
+            setTimeout(() => {
+                setIsVisible(true);
+            }, 0); // Delay to ensure modal is mounted before animation
+        }
+    }, [isOpenProductModal]);
+
+    useEffect(() => {
         const handleClickOutside = event => {
             if (modalRef.current && !modalRef.current.contains(event.target)) {
                 handleClose();
@@ -24,12 +34,12 @@ const ProductDetailsModal = () => {
 
         document.addEventListener('mousedown', handleClickOutside);
 
-        setIsVisible(true);
-
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
+
+    if (!isOpenProductModal) return null;
 
     return (
         <div className="fixed top-0 right-0 bottom-0 left-0 z-[100] flex items-center justify-center">
