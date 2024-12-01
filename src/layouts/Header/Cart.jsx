@@ -6,11 +6,6 @@ import { ShoppingCart, X } from 'react-feather';
 import Drawer from 'react-modern-drawer';
 
 const Cart = () => {
-    // const [isOpenCartDrawer, openCartDrawer, closeCartDrawer] = useLayoutStore(state => [
-    //     state.isOpenCartDrawer,
-    //     state.openCartDrawer,
-    //     state.closeCartDrawer,
-    // ]);
     const isOpenCartDrawer = useLayoutStore(state => state.isOpenCartDrawer);
     const openCartDrawer = useLayoutStore(state => state.openCartDrawer);
     const closeCartDrawer = useLayoutStore(state => state.closeCartDrawer);
