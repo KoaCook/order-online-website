@@ -3,7 +3,7 @@ import 'react-modern-drawer/dist/index.css';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
-import './globals.css';
+import '../globals.css';
 
 export const metadata = {
     title: 'Create Next App',
