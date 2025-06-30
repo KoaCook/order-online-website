@@ -2,7 +2,7 @@
 
 import useLayoutStore from '@/stores/useLayoutStore';
 import clsx from 'clsx';
-import { ShoppingCart, X } from 'react-feather';
+import { Minus, Plus, ShoppingCart, Trash, X } from 'react-feather';
 import Drawer from 'react-modern-drawer';
 
 const Cart = () => {
@@ -41,8 +41,35 @@ const Cart = () => {
                         </div>
                     </div>
                     <div className="flex-1 p-5">
-                        <div className="flex items-center justify-center h-full text-base text-center">
+                        {/* <div className="flex items-center justify-center h-full text-base text-center">
                             Giỏ hàng đang trống. Vui lòng quay lại trang chủ để tiếp tục mua hàng.
+                        </div> */}
+                        <div>
+                            <div className="mb-2.5">
+                                <div className="flex items-center mb-5 justify-between">
+                                    <div className="text-xl font-semibold w-[250px]">
+                                        Trái cây tươi (Đĩa)
+                                    </div>
+                                    <button className="h-10 w-10 text-[rgba(0,0,0,.54)] flex items-center justify-center ripple rounded-full">
+                                        <Trash size={18} />
+                                    </button>
+                                </div>
+                                <div className="flex items-center justify-between">
+                                    <div className="flex items-center">
+                                        <button className="flex items-center justify-center h-[34px] w-[34px] rounded-full text-primary border border-solid border-primary ripple">
+                                            <Minus size={18} />
+                                        </button>
+                                        <div className="w-[65px] text-center bg-transparent text-xl font-bold">
+                                            1
+                                        </div>
+                                        <button className="flex items-center justify-center h-[34px] w-[34px] rounded-full text-primary border border-solid border-primary ripple">
+                                            <Plus size={18} />
+                                        </button>
+                                    </div>
+                                    <div className="text-base mr-1">90.000 đ</div>
+                                </div>
+                                <hr className="my-4 border-t border-solid border-[rgba(0,0,0,.12)] w-full" />
+                            </div>
                         </div>
                     </div>
                     <div className="p-5 flex items-center gap-[15px]">
