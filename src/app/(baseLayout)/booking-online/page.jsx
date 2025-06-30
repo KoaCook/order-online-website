@@ -1,7 +1,14 @@
+'use client';
+
 import { GroupIcon, PhoneIcon, UserIcon } from '@/components/Icons';
 import { Minus, Plus, Trash } from 'react-feather';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { useState } from 'react';
 
 const BookingOnlinePage = () => {
+    const [selectedDate, setSelectedDate] = useState(null);
+
     return (
         <div className="bg-paper flex-1">
             <div className="max-w-xl mx-auto px-3 py-7.5 flex justify-between">
@@ -44,6 +51,7 @@ const BookingOnlinePage = () => {
                                     </span>
                                     <input
                                         type="number"
+                                        defaultValue={0}
                                         max="50"
                                         className="py-2 w-full flex-1 caret-primary text-[15px] outline-none"
                                     />
@@ -57,9 +65,15 @@ const BookingOnlinePage = () => {
                                     <span className="text-primary mr-2.5 w-6 h-6 flex items-center">
                                         <UserIcon />
                                     </span>
-                                    <input
-                                        type="number"
-                                        className="py-2 w-full flex-1 caret-primary text-[15px] outline-none"
+                                    <DatePicker
+                                        closeOnScroll={e => e.target === document}
+                                        selected={selectedDate}
+                                        onChange={date => setSelectedDate(date)}
+                                        className="w-full outline-none select-none text-[15px]"
+                                        dateFormat="dd/MM/yyyy"
+                                        minDate={new Date()}
+                                        preventOpenOnFocus={true}
+                                        placeholderText="Chọn ngày đặt chỗ"
                                     />
                                 </div>
                             </div>
@@ -67,7 +81,7 @@ const BookingOnlinePage = () => {
                         <div>
                             <div className="font-semibold text-base mb-2">Ghi chú</div>
                             <textarea
-                                className="border border-solid border-[#dbdbdb] pt-2 px-3 text-[15px] rounded-md resize-none w-full"
+                                className="border border-solid border-[#dbdbdb] pt-2 px-3 text-[15px] rounded-md resize-none w-full outline-none"
                                 rows={3}
                                 placeholder="Ghi chú"
                             ></textarea>
