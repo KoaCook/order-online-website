@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, memo } from 'react';
 
 const TabSwitcher = ({ tabs, selected, onTabChange }) => {
     const [underlineStyle, setUnderlineStyle] = useState({});
@@ -44,4 +44,4 @@ const TabSwitcher = ({ tabs, selected, onTabChange }) => {
     );
 };
 
-export default TabSwitcher;
+export default memo(TabSwitcher);

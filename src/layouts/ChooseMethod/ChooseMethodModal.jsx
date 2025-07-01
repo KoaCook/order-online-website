@@ -1,11 +1,10 @@
 import useLayoutStore from '@/stores/useLayoutStore';
 import clsx from 'clsx';
-import React, { useEffect, useRef, useState } from 'react';
-import { X } from 'react-feather';
-import LanguageSwitcher from '../Header/LanguageSwitcher';
-import DarkModeBtn from '../Header/DarkModeBtn';
-import TabSwitcher from './TabSwitcher';
 import dynamic from 'next/dynamic';
+import { useEffect, useRef, useState } from 'react';
+import DarkModeBtn from '../Header/DarkModeBtn';
+import LanguageSwitcher from '../Header/LanguageSwitcher';
+import TabSwitcher from './TabSwitcher';
 
 const DeliveryMethod = dynamic(() => import('./DeliveryMethod'));
 const DiningMethod = dynamic(() => import('./DiningMethod'));
@@ -13,6 +12,7 @@ const ReservationMethod = dynamic(() => import('./ReservationMethod'));
 
 const ChooseMethodModal = () => {
     const [isVisible, setIsVisible] = useState(false);
+    const [focusAnim, setFocusAnim] = useState(false);
     const closeMethodModal = useLayoutStore(state => state.closeMethodModal);
     const isOpenMethodModal = useLayoutStore(state => state.isOpenMethodModal);
     const modalRef = useRef();
@@ -37,9 +37,16 @@ const ChooseMethodModal = () => {
     }, [isOpenMethodModal]);
 
     useEffect(() => {
+        if (focusAnim) {
+            const timer = setTimeout(() => setFocusAnim(false), 300); // match animation duration
+            return () => clearTimeout(timer);
+        }
+    }, [focusAnim]);
+
+    useEffect(() => {
         const handleClickOutside = event => {
             if (modalRef.current && !modalRef.current.contains(event.target)) {
-                handleClose();
+                setFocusAnim(true);
             }
         };
 
@@ -49,6 +56,13 @@ const ChooseMethodModal = () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
+
+    const modalClass = clsx(
+        'relative z-10 w-full max-w-[960px] max-h-[90%] m-6 shadow-product-details-modal bg-paper rounded-md transition-all ease-ease duration-300 overflow-y-scroll',
+        isVisible && 'opacity-100 scale-100',
+        !isVisible && 'opacity-0 scale-75',
+        focusAnim && 'animate-focus-modal'
+    );
 
     if (!isOpenMethodModal) return null;
 
@@ -61,32 +75,19 @@ const ChooseMethodModal = () => {
                     !isVisible && 'opacity-0'
                 )}
             ></div>
-            <div
-                className={clsx(
-                    'relative z-10 w-full max-w-[960px] max-h-[90%] m-6 shadow-product-details-modal bg-paper rounded-md transition-all ease-ease duration-300 overflow-y-scroll',
-                    isVisible && 'opacity-100 scale-100',
-                    !isVisible && 'opacity-0 scale-75'
-                )}
-                ref={modalRef}
-            >
+            <div className={modalClass} ref={modalRef}>
                 <div className="flex items-center justify-between pl-[-10px] pr-2.5 pt-1">
                     <div className="flex items-center">
                         <LanguageSwitcher />
                         <DarkModeBtn />
                     </div>
-                    <button
-                        onClick={handleClose}
-                        className="w-6 h-6 flex items-center justify-center rounded-full bg-[#bcbdbe]"
-                    >
-                        <X size={16} className="text-paper" />
-                    </button>
                 </div>
                 <div className="text-xl mt-1 ml-5 font-semibold mb-2">Đặt hàng/ Đặt chỗ online</div>
                 <TabSwitcher tabs={tabs} selected={selectedTab} onTabChange={setSelectedTab} />
                 <div>
-                    {selectedTab === 0 && <DeliveryMethod />}
-                    {selectedTab === 1 && <DiningMethod />}
-                    {selectedTab === 2 && <ReservationMethod />}
+                    {selectedTab === 0 && <DeliveryMethod handleCloseModal={handleClose} />}
+                    {selectedTab === 1 && <DiningMethod handleCloseModal={handleClose} />}
+                    {selectedTab === 2 && <ReservationMethod handleCloseModal={handleClose} />}
                 </div>
             </div>
         </div>

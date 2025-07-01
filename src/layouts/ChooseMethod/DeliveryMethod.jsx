@@ -1,11 +1,14 @@
-import React from 'react';
+import Button from '@/components/Button';
 import StyledSelect from '@/components/StyledSelect';
-import { useMemo, useState } from 'react';
 import branches, { cities } from '@/constants/branches';
 import useDistrictWardOptions from '@/hooks/useDistrictWardOptions';
-import Button from '@/components/Button';
+import useCustomerDetails from '@/stores/useCustomerDetails';
+import useLayoutStore from '@/stores/useLayoutStore';
+import { memo, useMemo, useState } from 'react';
 
-const DeliveryMethod = () => {
+const DeliveryMethod = ({ handleCloseModal }) => {
+    const setChosenMethod = useLayoutStore(state => state.setChosenMethod);
+    const setDeliveryDetails = useCustomerDetails(state => state.setDeliveryDetails);
     const { districts, getWards } = useDistrictWardOptions();
     const [district, setDistrict] = useState('');
     const [ward, setWard] = useState('');
@@ -16,6 +19,13 @@ const DeliveryMethod = () => {
     };
 
     const wardOptions = useMemo(() => (district ? getWards(district) : []), [district, getWards]);
+
+    const handleChoose = () => {
+        setDeliveryDetails({ city: cities[0].label, district, ward });
+        setChosenMethod('delivery');
+        handleCloseModal();
+    };
+
     return (
         <div>
             <div className="pt-6 px-5 pb-4">
@@ -89,7 +99,9 @@ const DeliveryMethod = () => {
                 </div>
                 <div className="flex justify-center">
                     <div className="w-[368px]">
-                        <Button disabled>ĐỒNG Ý</Button>
+                        <Button disabled={!district || !ward} onClick={handleChoose}>
+                            ĐỒNG Ý
+                        </Button>
                     </div>
                 </div>
             </div>
@@ -97,4 +109,4 @@ const DeliveryMethod = () => {
     );
 };
 
-export default DeliveryMethod;
+export default memo(DeliveryMethod);

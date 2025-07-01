@@ -1,8 +1,16 @@
 import Button from '@/components/Button';
 import branches from '@/constants/branches';
-import React from 'react';
+import useLayoutStore from '@/stores/useLayoutStore';
+import React, { memo } from 'react';
 
-const DiningMethod = () => {
+const DiningMethod = ({ handleCloseModal }) => {
+    const setChosenMethod = useLayoutStore(state => state.setChosenMethod);
+
+    const handleChoose = () => {
+        setChosenMethod('dining');
+        handleCloseModal();
+    };
+
     return (
         <div>
             <div className="pt-6 pb-4">
@@ -57,7 +65,7 @@ const DiningMethod = () => {
                 </div>
                 <div className="flex justify-center mt-6 shadow-[0_-3px_6px_rgba(0,0,0,.1)] pt-4">
                     <div className="w-[368px]">
-                        <Button>ĐỒNG Ý</Button>
+                        <Button onClick={handleChoose}>ĐỒNG Ý</Button>
                     </div>
                 </div>
             </div>
@@ -65,4 +73,4 @@ const DiningMethod = () => {
     );
 };
 
-export default DiningMethod;
+export default memo(DiningMethod);

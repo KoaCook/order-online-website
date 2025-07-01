@@ -4,6 +4,7 @@ const useLayoutStore = create(set => ({
     isOpenMethodModal: true,
     isOpenProductModal: false,
     isOpenCartDrawer: false,
+    chosenMethod: null,
 
     openProductModal(productId) {
         set(state => ({
@@ -34,6 +35,9 @@ const useLayoutStore = create(set => ({
         set(state => ({
             isOpenMethodModal: false,
         }));
+    },
+    setChosenMethod(method) {
+        set(state => ({ chosenMethod: method }));
     },
 }));
 
