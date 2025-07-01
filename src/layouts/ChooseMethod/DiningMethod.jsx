@@ -1,13 +1,17 @@
 import Button from '@/components/Button';
+import routes from '@/config/routes';
 import branches from '@/constants/branches';
 import useLayoutStore from '@/stores/useLayoutStore';
+import { useRouter } from 'next/navigation';
 import React, { memo } from 'react';
 
 const DiningMethod = ({ handleCloseModal }) => {
+    const router = useRouter();
     const setChosenMethod = useLayoutStore(state => state.setChosenMethod);
 
     const handleChoose = () => {
         setChosenMethod('pickup');
+        router.push(routes.HOME);
         handleCloseModal();
     };
 

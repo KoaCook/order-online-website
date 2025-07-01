@@ -11,8 +11,8 @@ const ReservationMethod = ({ handleCloseModal }) => {
 
     const handleChoose = () => {
         setChosenMethod('reservation');
-        handleCloseModal();
         router.push(routes.RESERVATION);
+        handleCloseModal();
     };
 
     return (

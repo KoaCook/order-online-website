@@ -1,12 +1,15 @@
 import Button from '@/components/Button';
 import StyledSelect from '@/components/StyledSelect';
+import routes from '@/config/routes';
 import branches, { cities } from '@/constants/branches';
 import useDistrictWardOptions from '@/hooks/useDistrictWardOptions';
 import useCustomerDetails from '@/stores/useCustomerDetails';
 import useLayoutStore from '@/stores/useLayoutStore';
+import { useRouter } from 'next/navigation';
 import { memo, useMemo, useState } from 'react';
 
 const DeliveryMethod = ({ handleCloseModal }) => {
+    const router = useRouter();
     const setChosenMethod = useLayoutStore(state => state.setChosenMethod);
     const setDeliveryDetails = useCustomerDetails(state => state.setDeliveryDetails);
     const { districts, getWards } = useDistrictWardOptions();
@@ -23,6 +26,7 @@ const DeliveryMethod = ({ handleCloseModal }) => {
     const handleChoose = () => {
         setDeliveryDetails({ city: cities[0].label, district, ward });
         setChosenMethod('delivery');
+        router.push(routes.HOME);
         handleCloseModal();
     };
 
