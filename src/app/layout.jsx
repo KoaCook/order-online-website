@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import './globals.css';
 import './layout.css';
+import ChooseMethod from '@/layouts/ChooseMethod';
 
 export const metadata = {
     title: 'Create Next App',
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
     return (
         <html lang="vi">
             <body className={openSans.className}>{children}</body>
+            <ChooseMethod />
         </html>
     );
 }

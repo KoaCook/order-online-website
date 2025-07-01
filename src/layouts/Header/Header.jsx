@@ -4,6 +4,7 @@ import Cart from './Cart';
 import LanguageSwitcher from './LanguageSwitcher';
 import OrderHistory from './OrderHistory';
 import OrderTypeSwitcher from './OrderTypeSwitcher';
+import DarkModeBtn from './DarkModeBtn';
 
 const Header = () => {
     return (
@@ -20,13 +21,7 @@ const Header = () => {
                     <OrderTypeSwitcher />
                     <OrderHistory />
                     <Cart />
-                    <button
-                        type="button"
-                        data-ripple-dark="true"
-                        className="min-h-10 min-w-10 flex items-center justify-center rounded-lg ml-2.5 ripple"
-                    >
-                        <Moon />
-                    </button>
+                    <DarkModeBtn />
                     <LanguageSwitcher />
                 </div>
             </div>

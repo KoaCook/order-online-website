@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 
 const useLayoutStore = create(set => ({
+    isOpenMethodModal: true,
     isOpenProductModal: false,
     isOpenCartDrawer: false,
 
@@ -22,6 +23,16 @@ const useLayoutStore = create(set => ({
     closeCartDrawer() {
         set(state => ({
             isOpenCartDrawer: false,
+        }));
+    },
+    openMethodModal() {
+        set(state => ({
+            isOpenMethodModal: true,
+        }));
+    },
+    closeMethodModal() {
+        set(state => ({
+            isOpenMethodModal: false,
         }));
     },
 }));
