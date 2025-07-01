@@ -2,13 +2,17 @@ import Button from '@/components/Button';
 import branches from '@/constants/branches';
 import useLayoutStore from '@/stores/useLayoutStore';
 import React, { memo } from 'react';
+import { useRouter } from 'next/navigation';
+import routes from '@/config/routes';
 
 const ReservationMethod = ({ handleCloseModal }) => {
+    const router = useRouter();
     const setChosenMethod = useLayoutStore(state => state.setChosenMethod);
 
     const handleChoose = () => {
         setChosenMethod('reservation');
         handleCloseModal();
+        router.push(routes.RESERVATION);
     };
 
     return (
@@ -37,7 +41,7 @@ const ReservationMethod = ({ handleCloseModal }) => {
                                                 type="radio"
                                                 name="branch"
                                                 value={branch.id}
-                                                checked={checked}
+                                                defaultChecked={checked}
                                                 className="absolute w-6 h-6 opacity-0 cursor-pointer"
                                             />
                                             <span

@@ -4,7 +4,7 @@ const useLayoutStore = create(set => ({
     isOpenMethodModal: true,
     isOpenProductModal: false,
     isOpenCartDrawer: false,
-    chosenMethod: null,
+    chosenMethod: 'delivery', // 'delivery' or 'pickup' or 'reservation'
 
     openProductModal(productId) {
         set(state => ({

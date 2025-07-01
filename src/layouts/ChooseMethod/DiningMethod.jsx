@@ -7,7 +7,7 @@ const DiningMethod = ({ handleCloseModal }) => {
     const setChosenMethod = useLayoutStore(state => state.setChosenMethod);
 
     const handleChoose = () => {
-        setChosenMethod('dining');
+        setChosenMethod('pickup');
         handleCloseModal();
     };
 
@@ -37,7 +37,7 @@ const DiningMethod = ({ handleCloseModal }) => {
                                                 type="radio"
                                                 name="branch"
                                                 value={branch.id}
-                                                checked={checked}
+                                                defaultChecked={checked}
                                                 className="absolute w-6 h-6 opacity-0 cursor-pointer"
                                             />
                                             <span

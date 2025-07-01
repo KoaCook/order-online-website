@@ -1,10 +1,9 @@
 import Image from 'next/image';
-import { Moon } from 'react-feather';
 import Cart from './Cart';
-import LanguageSwitcher from './LanguageSwitcher';
-import OrderHistory from './OrderHistory';
-import OrderTypeSwitcher from './OrderTypeSwitcher';
 import DarkModeBtn from './DarkModeBtn';
+import LanguageSwitcher from './LanguageSwitcher';
+import MethodSwitcher from './MethodSwitcher';
+import OrderHistory from './OrderHistory';
 
 const Header = () => {
     return (
@@ -18,7 +17,7 @@ const Header = () => {
                     className="!h-full !w-auto"
                 />
                 <div className="flex items-center">
-                    <OrderTypeSwitcher />
+                    <MethodSwitcher />
                     <OrderHistory />
                     <Cart />
                     <DarkModeBtn />
