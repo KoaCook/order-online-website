@@ -1,7 +1,8 @@
 'use client';
 
+import Button from '@/components/Button';
+import routes from '@/config/routes';
 import useLayoutStore from '@/stores/useLayoutStore';
-import clsx from 'clsx';
 import { Minus, Plus, ShoppingCart, Trash, X } from 'react-feather';
 import Drawer from 'react-modern-drawer';
 
@@ -76,16 +77,11 @@ const Cart = () => {
                         <button className="border border-solid border-primary rounded-md h-10 px-4 text-sm text-primary ripple flex-1">
                             THÊM MÓN
                         </button>
-                        <button
-                            className={clsx(
-                                'border border-solid rounded-md h-10 px-4 text-sm flex-1',
-                                false && 'border-primary bg-primary text-white ripple-primary',
-                                true &&
-                                    'bg-[rgba(0,0,0,.12)] text-[rgba(0,0,0,.26)] select-none cursor-default'
-                            )}
-                        >
-                            THANH TOÁN
-                        </button>
+                        <div className="flex-1">
+                            <Button href={routes.ORDER} onClick={closeCartDrawer}>
+                                THANH TOÁN
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </Drawer>

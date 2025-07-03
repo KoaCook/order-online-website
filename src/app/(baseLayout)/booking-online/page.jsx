@@ -3,8 +3,8 @@
 import { GroupIcon, PhoneIcon, UserIcon } from '@/components/Icons';
 import { Minus, Plus, Trash } from 'react-feather';
 import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import { useState } from 'react';
+import Button from '@/components/Button';
 
 const BookingOnlinePage = () => {
     const [selectedDate, setSelectedDate] = useState(null);
@@ -218,12 +218,9 @@ const BookingOnlinePage = () => {
                         </div>
                     </div>
 
-                    <button className="w-full bg-primary text-white text-sm px-4 h-10 uppercase rounded-md mt-6 ripple-primary">
-                        ĐẶT CHỖ
-                    </button>
-                    <button className="w-full bg-[rgba(0,0,0,.12)] pointer-events-none text-[rgba(0,0,0,.26)] text-sm px-4 h-10 uppercase rounded-md mt-6">
-                        ĐẶT CHỖ
-                    </button>
+                    <Button className="mt-6" disabled>
+                        Đặt chỗ
+                    </Button>
                 </div>
             </div>
         </div>

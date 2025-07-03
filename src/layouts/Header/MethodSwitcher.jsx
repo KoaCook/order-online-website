@@ -4,21 +4,33 @@ import Menu from '@/components/Menu';
 import METHODS from '@/constants/methods';
 import useLayoutStore from '@/stores/useLayoutStore';
 import clsx from 'clsx';
-import dynamic from 'next/dynamic';
 import { useRef, useState } from 'react';
 import { ChevronDown } from 'react-feather';
-
-const ConfirmMethodModal = dynamic(() => import('./ConfirmMethodModal'));
+import ConfirmMethodModal from './ConfirmMethodModal';
 
 const MethodSwitcher = () => {
     const [isOpenConfirmModal, setOpenConfirmModal] = useState(false);
     const chosenMethod = useLayoutStore(state => state.chosenMethod);
+    const setChosenMethod = useLayoutStore(state => state.setChosenMethod);
     const newChosenMethod = useRef();
 
     // Default to first method if none chosen
     const currentMethod = METHODS.find(m => m.key === chosenMethod) || METHODS[0];
 
     const handleChooseMethod = method => {
+        if (!method || !method.key) return;
+
+        // Define what constitutes a direct switch (no confirmation needed)
+        const isDirectSwitch =
+            (method.key === 'delivery' && chosenMethod === 'pickup') ||
+            (method.key === 'pickup' && chosenMethod === 'delivery');
+
+        if (isDirectSwitch) {
+            setChosenMethod(method.key);
+            return;
+        }
+
+        // For all other cases, require confirmation
         newChosenMethod.current = method;
         setOpenConfirmModal(true);
     };

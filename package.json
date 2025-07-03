@@ -13,7 +13,6 @@
         "next": "15.0.2",
         "react": "19.0.0-rc-02c0e824-20241028",
         "react-calendar": "^6.0.0",
-        "react-date-picker": "^11.0.0",
         "react-datepicker": "^8.4.0",
         "react-dom": "19.0.0-rc-02c0e824-20241028",
         "react-feather": "^2.0.10",

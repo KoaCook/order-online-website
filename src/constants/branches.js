@@ -1,7 +1,7 @@
 export const cities = [
     {
         value: 'tphcm',
-        label: 'Thành phố Hồ Chí Minh',
+        label: 'TP Hồ Chí Minh',
     },
 ];
 

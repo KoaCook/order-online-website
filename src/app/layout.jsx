@@ -3,6 +3,7 @@ import 'react-modern-drawer/dist/index.css';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
+import 'react-datepicker/dist/react-datepicker.css';
 import './globals.css';
 import './layout.css';
 import ChooseMethod from '@/layouts/ChooseMethod';
