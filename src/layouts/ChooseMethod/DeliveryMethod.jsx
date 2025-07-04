@@ -55,7 +55,7 @@ const DeliveryMethod = ({ handleCloseModal }) => {
                                             type="radio"
                                             name="branch"
                                             value={branch.id}
-                                            checked={checked}
+                                            defaultChecked
                                             className="absolute w-6 h-6 opacity-0 cursor-pointer"
                                         />
                                         <span
