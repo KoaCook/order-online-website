@@ -7,16 +7,19 @@ import React from 'react';
 const ProductItem = ({ data }) => {
     const openProductModal = useLayoutStore(state => state.openProductModal);
 
+    const handleOpenModal = () => {
+        openProductModal(data.id);
+    };
+
     return (
         <div className="h-full rounded-md shadow-product-item bg-white overflow-hidden flex flex-col">
             <div className="w-full aspect-[4/3] overflow-hidden relative">
                 <div
-                    onClick={openProductModal}
                     style={{ backgroundImage: 'url(/fallback_product_img.png)' }}
                     className="w-full h-full bg-center bg-cover transition-transform hover:scale-110 ease-in-out duration-500 cursor-pointer"
                 ></div>
                 <div
-                    onClick={openProductModal}
+                    onClick={handleOpenModal}
                     style={{ backgroundImage: `url(${data.image_url})` }}
                     className="w-full h-full bg-center bg-cover bg-no-repeat transition-transform hover:scale-110 ease-in-out duration-500 cursor-pointer absolute top-0 left-0 right-0 bottom-0 z-10"
                 ></div>
@@ -27,13 +30,13 @@ const ProductItem = ({ data }) => {
                 <div className="w-max flex flex-col self-center">
                     <button
                         className="text-white font-semibold bg-primary rounded-md text-sm h-10 min-w-16 px-4 mb-1.5"
-                        onClick={openProductModal}
+                        onClick={handleOpenModal}
                     >
                         THÊM VÀO GIỎ
                     </button>
                     <button
                         className="text-primary font-semibold rounded-md text-sm h-10 min-w-16 px-4 mb-1.5"
-                        onClick={openProductModal}
+                        onClick={handleOpenModal}
                     >
                         MUA NGAY
                     </button>
