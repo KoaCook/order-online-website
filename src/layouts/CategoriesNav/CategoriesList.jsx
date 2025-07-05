@@ -1,25 +1,29 @@
 'use client';
 
+import categories from '@/constants/categories';
 import clsx from 'clsx';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 
-const categories = [
-    'Tất cả',
-    'Món Ăn Vặt',
-    'Topping',
-    'Đồ uống',
-    'Nước ép trái cây',
-    'Kem',
-    'Bánh Ngọt',
-    'Trà Sữa',
-    'Sữa chua',
-    'Happy Meal',
-];
+const ALL_CATEGORY = { label: 'Tất cả', slug: '' };
 
 const CategoriesList = () => {
     const scrollRef = useRef(null);
-    const categoryRefs = useRef([]); // Array of refs for each category button
-    const [selectedCategory, setSelectedCategory] = useState('Tất cả'); // Initialize with the default active category
+    const categoryRefs = useRef([]);
+    const router = useRouter();
+    const searchParams = useSearchParams();
+
+    // Read initial category from query param, fallback to ALL_CATEGORY
+    const initialCategorySlug = searchParams.get('category') || '';
+    const [selectedCategorySlug, setSelectedCategorySlug] = useState(initialCategorySlug);
+
+    // Keep state in sync with query param if it changes externally
+    useEffect(() => {
+        const currentCategorySlug = searchParams.get('category') || '';
+        setSelectedCategorySlug(currentCategorySlug);
+    }, [searchParams]);
+
+    // Drag-to-scroll logic
     let isDragging = false;
     let startX, scrollLeft;
 
@@ -42,15 +46,27 @@ const CategoriesList = () => {
     };
 
     const handleCategoryClick = (category, index) => {
-        setSelectedCategory(category);
+        setSelectedCategorySlug(category.slug);
+
+        // Update the URL query param
+        const params = new URLSearchParams(Array.from(searchParams.entries()));
+        if (!category.slug) {
+            params.delete('category');
+        } else {
+            params.set('category', category.slug);
+        }
+        router.replace(`?${params.toString()}`, { scroll: false });
 
         // Scroll the clicked category into view
         categoryRefs.current[index].scrollIntoView({
             behavior: 'smooth',
             block: 'nearest',
-            inline: 'center', // Center the clicked item horizontally
+            inline: 'center',
         });
     };
+
+    // Compose categories list with "Tất cả" at the start
+    const categoriesList = [ALL_CATEGORY, ...categories];
 
     return (
         <div
@@ -61,19 +77,20 @@ const CategoriesList = () => {
             onMouseLeave={handleMouseUpOrLeave}
             onMouseUp={handleMouseUpOrLeave}
         >
-            {categories.map((category, i) => (
+            {categoriesList.map((category, i) => (
                 <button
-                    key={i}
-                    ref={el => (categoryRefs.current[i] = el)} // Assign each button to the refs array
+                    key={category.slug || 'all'}
+                    ref={el => (categoryRefs.current[i] = el)}
                     onClick={() => handleCategoryClick(category, i)}
                     className={clsx(
                         'px-4 mr-2 rounded-md h-10 text-sm font-normal whitespace-nowrap outline-none',
-                        category !== selectedCategory &&
+                        category.slug !== selectedCategorySlug &&
                             'bg-[#f5f5f5] text-black ripple-unactive-category-btn',
-                        category === selectedCategory && 'bg-primary text-white ripple-primary'
+                        category.slug === selectedCategorySlug &&
+                            'bg-primary text-white ripple-primary'
                     )}
                 >
-                    {category}
+                    {category.label}
                 </button>
             ))}
         </div>

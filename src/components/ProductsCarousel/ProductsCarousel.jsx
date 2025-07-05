@@ -6,8 +6,9 @@ import React, { useRef } from 'react';
 
 import ProductItem from '../ProductItem';
 import { ChevronLeft, ChevronRight } from 'react-feather';
+import Button from '../Button';
 
-const ProductsCarousel = () => {
+const ProductsCarousel = ({ data }) => {
     const sliderRef = useRef();
 
     const handlePrevSlide = () => {
@@ -21,7 +22,7 @@ const ProductsCarousel = () => {
     return (
         <>
             <div className="flex items-center justify-between">
-                <h2 className="font-semibold text-2xl">Món Ăn Vặt</h2>
+                <h2 className="font-semibold text-2xl">{data.label}</h2>
                 <div className="flex">
                     <button
                         className="h-10 w-10 ripple rounded-full flex items-center justify-center"
@@ -53,37 +54,20 @@ const ProductsCarousel = () => {
                         autoplay={false}
                         draggable={false}
                     >
-                        <div className="px-[15px]">
-                            <ProductItem />
-                        </div>
-                        <div className="px-[15px]">
-                            <ProductItem />
-                        </div>
-                        <div className="px-[15px]">
-                            <ProductItem />
-                        </div>
-                        <div className="px-[15px]">
-                            <ProductItem />
-                        </div>
-                        <div className="px-[15px]">
-                            <ProductItem />
-                        </div>
-                        <div className="px-[15px]">
-                            <ProductItem />
-                        </div>
-                        <div className="px-[15px]">
-                            <ProductItem />
-                        </div>
-                        <div className="px-[15px]">
-                            <ProductItem />
-                        </div>
+                        {data.items.map(item => (
+                            <div key={item.id} className="px-[15px]">
+                                <ProductItem data={item} />
+                            </div>
+                        ))}
                     </Slider>
                 </div>
             </div>
             <div className="mt-7.5 flex items-center justify-center">
-                <button className="border border-solid border-primary rounded-md h-10 px-4 text-sm text-primary ripple">
-                    XEM TẤT CẢ
-                </button>
+                <div className="w-fit">
+                    <Button variant="outline" href={`/?category=${data.slug}`}>
+                        XEM TẤT CẢ
+                    </Button>
+                </div>
             </div>
         </>
     );
