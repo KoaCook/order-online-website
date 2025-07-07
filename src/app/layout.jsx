@@ -1,12 +1,15 @@
+import ChooseMethod from '@/layouts/ChooseMethod';
+import dynamic from 'next/dynamic';
 import { Open_Sans } from 'next/font/google';
+import 'react-datepicker/dist/react-datepicker.css';
 import 'react-modern-drawer/dist/index.css';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
-import 'react-datepicker/dist/react-datepicker.css';
 import './globals.css';
 import './layout.css';
-import ChooseMethod from '@/layouts/ChooseMethod';
+
+const Notifications = dynamic(() => import('@/layouts/Notifications'));
 
 export const metadata = {
     title: 'Create Next App',
@@ -24,6 +27,7 @@ export default function RootLayout({ children }) {
         <html lang="vi">
             <body className={openSans.className}>{children}</body>
             <ChooseMethod />
+            <Notifications />
         </html>
     );
 }

@@ -7,7 +7,7 @@ import OrderHistory from './OrderHistory';
 
 const Header = () => {
     return (
-        <header className="sticky top-0 z-50 bg-white shadow-fade">
+        <header className="sticky top-0 z-[101] bg-white shadow-fade">
             <div className="max-w-xl mx-auto px-3 py-1.5 h-[72px] w-full flex items-center justify-between">
                 <Image
                     src="/logo_mixue.webp"
