@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
 const useCart = create(set => ({
-    products: [], // each item is {id: int, quantity: int, price: int}
+    products: [], // each item is {id: int, name: string, quantity: int, price: int}
 
     addProduct(product) {
         set(state => {

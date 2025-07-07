@@ -1,11 +1,13 @@
 'use client';
 
 import Button from '@/components/Button';
+import CartSummary from '@/components/CartSummary';
+import ProductCartItem from '@/components/ProductCartItem';
 import routes from '@/config/routes';
 import useCart from '@/stores/useCart';
 import useLayoutStore from '@/stores/useLayoutStore';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Minus, Plus, ShoppingCart, Trash, X } from 'react-feather';
+import { ShoppingCart, X } from 'react-feather';
 import Drawer from 'react-modern-drawer';
 
 const Cart = () => {
@@ -59,54 +61,39 @@ const Cart = () => {
                             Giỏ hàng
                         </div>
                     </div>
-                    <div className="flex-1 p-5">
+                    <div className="flex-1 pt-5 pr-5 pl-5 pb-2 overflow-y-scroll">
                         {products.length === 0 ? (
                             <div className="flex items-center justify-center h-full text-base text-center">
                                 Giỏ hàng đang trống. Vui lòng quay lại trang chủ để tiếp tục mua
                                 hàng.
                             </div>
                         ) : (
-                            <div>
-                                <div className="mb-2.5">
-                                    <div className="flex items-center mb-5 justify-between">
-                                        <div className="text-xl font-semibold w-[250px]">
-                                            Trái cây tươi (Đĩa)
-                                        </div>
-                                        <button className="h-10 w-10 text-[rgba(0,0,0,.54)] flex items-center justify-center ripple rounded-full">
-                                            <Trash size={18} />
-                                        </button>
-                                    </div>
-                                    <div className="flex items-center justify-between">
-                                        <div className="flex items-center">
-                                            <button className="flex items-center justify-center h-[34px] w-[34px] rounded-full text-primary border border-solid border-primary ripple">
-                                                <Minus size={18} />
-                                            </button>
-                                            <div className="w-[65px] text-center bg-transparent text-xl font-bold">
-                                                1
-                                            </div>
-                                            <button className="flex items-center justify-center h-[34px] w-[34px] rounded-full text-primary border border-solid border-primary ripple">
-                                                <Plus size={18} />
-                                            </button>
-                                        </div>
-                                        <div className="text-base mr-1">90.000 đ</div>
-                                    </div>
-                                    <hr className="my-4 border-t border-solid border-[rgba(0,0,0,.12)] w-full" />
-                                </div>
-                            </div>
+                            products.map(product => (
+                                <ProductCartItem key={product.id} data={product} />
+                            ))
                         )}
                     </div>
-                    <div className="p-5 flex items-center gap-[15px]">
-                        <button className="border border-solid border-primary rounded-md h-10 px-4 text-sm text-primary ripple flex-1">
-                            THÊM MÓN
-                        </button>
-                        <div className="flex-1">
-                            <Button
-                                href={routes.ORDER}
-                                onClick={closeCartDrawer}
-                                disabled={products.length === 0}
-                            >
-                                THANH TOÁN
-                            </Button>
+                    <div>
+                        {products.length > 0 && (
+                            <div className="px-5 pb-4 pt-3">
+                                <CartSummary />
+                            </div>
+                        )}
+                        <div className="p-5 flex items-center gap-[15px] shadow-[0_-3px_6px_rgba(0,0,0,.1)]">
+                            <div className="flex-1">
+                                <Button variant="outline" href={routes.HOME}>
+                                    THÊM MÓN
+                                </Button>
+                            </div>
+                            <div className="flex-1">
+                                <Button
+                                    href={routes.ORDER}
+                                    onClick={closeCartDrawer}
+                                    disabled={products.length === 0}
+                                >
+                                    THANH TOÁN
+                                </Button>
+                            </div>
                         </div>
                     </div>
                 </div>

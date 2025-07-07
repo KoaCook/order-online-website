@@ -12,7 +12,7 @@ const ProductDetailsActions = ({ data, error, isLoading, isValidating, onClose }
     const [quantity, setQuantity] = useState(1);
 
     const handleAddProduct = () => {
-        addProduct({ id: data.id, price: data.price, quantity });
+        addProduct({ id: data.id, price: data.price, quantity, name: data.name });
         onClose();
     };
 
