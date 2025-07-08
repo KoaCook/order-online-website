@@ -6,14 +6,18 @@ import { CheckIcon } from '../Icons';
 import { useState } from 'react';
 import Button from '../Button';
 import useCart from '@/stores/useCart';
+import useNotifications from '@/stores/useNotifications';
+import notifications from '@/constants/notifications';
 
 const ProductDetailsActions = ({ data, error, isLoading, isValidating, onClose }) => {
     const addProduct = useCart(state => state.addProduct);
+    const addNotification = useNotifications(state => state.addNotification);
     const [quantity, setQuantity] = useState(1);
 
     const handleAddProduct = () => {
-        addProduct({ id: data.id, price: data.price, quantity, name: data.name });
+        addProduct({ id: String(data.id), price: data.price, quantity, name: data.name });
         onClose();
+        addNotification(notifications.ADD_PRODUCT_TITLE, `${data.name} x${quantity}`);
     };
 
     return (

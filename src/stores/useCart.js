@@ -32,7 +32,7 @@ const useCart = create(set => ({
             products: state.products.map(p => (p.id === productId ? { ...p, quantity } : p)),
         }));
     },
-    clearCart() {
+    resetCart() {
         set({ products: [] });
     },
 }));

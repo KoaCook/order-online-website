@@ -5,42 +5,38 @@ import StyledSelect from '@/components/StyledSelect';
 import { cities } from '@/constants/branches';
 import useDistrictWardOptions from '@/hooks/useDistrictWardOptions';
 import useLayoutStore from '@/stores/useLayoutStore';
-import { useMemo, useState, useEffect, useRef } from 'react';
-import styles from './CustomerDetails.module.css';
+import useCustomerDetails from '@/stores/useCustomerDetails';
+import { useMemo } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
-const ANIMATION_DURATION = 400; // ms
+const deliveryVariants = {
+    hidden: { x: '-100%' },
+    visible: { x: 0 },
+    exit: { x: '-100%' },
+};
 
 const CustomerDetails = () => {
     const chosenMethod = useLayoutStore(state => state.chosenMethod);
-    const { districts, getWards } = useDistrictWardOptions();
-    const [district, setDistrict] = useState('');
-    const [ward, setWard] = useState('');
 
-    // Animation state for delivery section
-    const [showDelivery, setShowDelivery] = useState(chosenMethod === 'delivery');
-    const [deliveryAnim, setDeliveryAnim] = useState(chosenMethod === 'delivery' ? 'slideIn' : '');
-    const prevMethod = useRef(chosenMethod);
+    // Zustand store for customer details
+    const { name, phone, city, district, ward, address, setField, setDeliveryDetails } =
+        useCustomerDetails();
 
+    const { districts, getWards } = useDistrictWardOptions(city);
     const wardOptions = useMemo(() => (district ? getWards(district) : []), [district, getWards]);
 
-    const handleDistrictChange = selected => {
-        setDistrict(selected);
-        setWard('');
+    // Handlers for delivery details
+    const handleCityChange = selectedCity => {
+        setDeliveryDetails({ city: selectedCity, district: '', ward: '' });
     };
 
-    useEffect(() => {
-        if (chosenMethod === 'delivery' && !showDelivery) {
-            // Mount and animate in
-            setShowDelivery(true);
-            setTimeout(() => setDeliveryAnim('slideIn'), 10); // allow DOM to mount
-        } else if (chosenMethod !== 'delivery' && showDelivery) {
-            // Animate out, then unmount
-            setDeliveryAnim('slideOut');
-            const timeout = setTimeout(() => setShowDelivery(false), ANIMATION_DURATION);
-            return () => clearTimeout(timeout);
-        }
-        prevMethod.current = chosenMethod;
-    }, [chosenMethod, showDelivery]);
+    const handleDistrictChange = selectedDistrict => {
+        setDeliveryDetails({ district: selectedDistrict, ward: '' });
+    };
+
+    const handleWardChange = selectedWard => {
+        setDeliveryDetails({ ward: selectedWard });
+    };
 
     return (
         <div className="overflow-hidden">
@@ -56,6 +52,8 @@ const CustomerDetails = () => {
                         type="text"
                         className="py-2 w-full flex-1 caret-primary text-[15px] outline-none"
                         placeholder="Họ và tên"
+                        value={name}
+                        onChange={e => setField('name', e.target.value)}
                     />
                 </div>
                 <div className="px-3 border border-solid border-[#dbdbdb] flex items-center h-10 rounded-lg flex-1 overflow-hidden">
@@ -66,51 +64,62 @@ const CustomerDetails = () => {
                         type="text"
                         className="py-2 w-full flex-1 caret-primary text-[15px] outline-none"
                         placeholder="Số điện thoại"
+                        value={phone}
+                        onChange={e => setField('phone', e.target.value)}
                     />
                 </div>
             </div>
-            {showDelivery && (
-                <div
-                    className={`${styles.deliverySection} ${
-                        deliveryAnim ? styles[deliveryAnim] : ''
-                    }`}
-                    style={{ minHeight: 0 }}
-                >
-                    <div className="px-3 mt-[22px] border border-solid border-[#dbdbdb] flex items-center h-10 rounded-lg overflow-hidden mb-[22px]">
-                        <span className="text-primary mr-2.5 w-7 h-6 flex items-center -ml-1">
-                            <LocationIcon />
-                        </span>
-                        <input
-                            type="text"
-                            className="py-2 w-full flex-1 caret-primary text-[15px] outline-none"
-                            placeholder="Địa chỉ"
-                        />
-                    </div>
-                    <div className="flex gap-3">
-                        <StyledSelect
-                            options={cities}
-                            placeholder="Tỉnh/Thành phố"
-                            value={cities[0].value}
-                            className="flex-1"
-                        />
-                        <StyledSelect
-                            options={districts}
-                            value={district}
-                            onChange={handleDistrictChange}
-                            placeholder="Quận/Huyện"
-                            className="flex-1"
-                        />
-                        <StyledSelect
-                            options={wardOptions}
-                            value={ward}
-                            onChange={setWard}
-                            placeholder="Phường/Xã"
-                            disabled={!district}
-                            className="flex-1"
-                        />
-                    </div>
-                </div>
-            )}
+            <AnimatePresence>
+                {chosenMethod === 'delivery' && (
+                    <motion.div
+                        key="delivery-section"
+                        style={{ minHeight: 0 }}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                        variants={deliveryVariants}
+                        transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                    >
+                        <div className="px-3 mt-[22px] border border-solid border-[#dbdbdb] flex items-center h-10 rounded-lg overflow-hidden mb-[22px]">
+                            <span className="text-primary mr-2.5 w-7 h-6 flex items-center -ml-1">
+                                <LocationIcon />
+                            </span>
+                            <input
+                                type="text"
+                                className="py-2 w-full flex-1 caret-primary text-[15px] outline-none"
+                                placeholder="Địa chỉ"
+                                value={address}
+                                onChange={e => setDeliveryDetails({ address: e.target.value })}
+                            />
+                        </div>
+                        <div className="flex gap-3">
+                            <StyledSelect
+                                options={cities}
+                                placeholder="Tỉnh/Thành phố"
+                                value={city}
+                                onChange={handleCityChange}
+                                className="flex-1"
+                            />
+                            <StyledSelect
+                                options={districts}
+                                value={district}
+                                onChange={handleDistrictChange}
+                                placeholder="Quận/Huyện"
+                                className="flex-1"
+                                disabled={!city}
+                            />
+                            <StyledSelect
+                                options={wardOptions}
+                                value={ward}
+                                onChange={handleWardChange}
+                                placeholder="Phường/Xã"
+                                disabled={!district}
+                                className="flex-1"
+                            />
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };

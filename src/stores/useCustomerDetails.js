@@ -1,12 +1,13 @@
+import { cities } from '@/constants/branches';
 import { create } from 'zustand';
 
-const useCustomerDetails = create(set => ({
+const initialState = {
     name: '',
     phone: '',
     note: '',
 
     // Delivery details
-    city: '',
+    city: cities[0].value,
     district: '',
     ward: '',
     address: '',
@@ -15,6 +16,17 @@ const useCustomerDetails = create(set => ({
     numOfCustomers: 0,
     date: '',
     time: '',
+
+    paymentMethod: 'cash', // 'cash' or 'transfer'
+    schedule: 'immediately',
+    selectedDate: '',
+    selectedTime: '',
+
+    createdOrderId: '',
+};
+
+const useCustomerDetails = create(set => ({
+    ...initialState,
 
     setDeliveryDetails: ({ city, district, ward, address }) =>
         set(state => ({
@@ -28,6 +40,7 @@ const useCustomerDetails = create(set => ({
         set(state => ({
             [key]: value,
         })),
+    resetCustomerDetails: () => set(() => ({ ...initialState })),
 }));
 
 export default useCustomerDetails;

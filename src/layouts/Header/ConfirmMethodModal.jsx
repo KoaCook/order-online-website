@@ -55,19 +55,19 @@ const ConfirmMethodModal = ({ isOpenConfirmModal, closeConfirmModal, method }) =
     if (!isOpenConfirmModal) return null;
 
     return (
-        <div className="fixed top-0 right-0 bottom-0 left-0 z-[100] flex items-center justify-center">
+        <div className="fixed top-0 right-0 bottom-0 left-0 z-[999] flex items-center justify-center">
             <div
                 className={clsx(
                     'absolute top-0 left-0 w-full h-full bg-[rgba(33,33,33,0.46)] -z-10 transition-all duration-300 ease-ease',
                     isVisible && 'opacity-100',
-                    !isVisible && 'opacity-0'
+                    !isVisible && 'opacity-0',
                 )}
             ></div>
             <div
                 className={clsx(
                     'relative z-10 w-full max-w-[350px] max-h-[90%] m-6 shadow-product-details-modal bg-paper rounded-md transition-all ease-ease duration-300 overflow-hidden',
                     isVisible && 'opacity-100 scale-100',
-                    !isVisible && 'opacity-0 scale-75'
+                    !isVisible && 'opacity-0 scale-75',
                 )}
                 ref={modalRef}
             >

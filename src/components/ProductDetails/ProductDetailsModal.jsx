@@ -54,7 +54,7 @@ const ProductDetailsModal = () => {
     if (!isOpenProductModal) return null;
 
     return (
-        <div className="fixed top-0 right-0 bottom-0 left-0 z-[100] flex items-center justify-center">
+        <div className="fixed top-0 right-0 bottom-0 left-0 z-[999] flex items-center justify-center">
             <div
                 className={clsx(
                     'absolute top-0 left-0 w-full h-full bg-[rgba(33,33,33,0.46)] -z-10 transition-all duration-300 ease-ease',

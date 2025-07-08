@@ -2,7 +2,8 @@
 
 import StyledSelect from '@/components/StyledSelect';
 import useLayoutStore from '@/stores/useLayoutStore';
-import { useState } from 'react';
+import useCustomerDetails from '@/stores/useCustomerDetails';
+import { useCallback } from 'react';
 
 import dynamic from 'next/dynamic';
 
@@ -22,13 +23,35 @@ const paymentMethods = [
     },
 ];
 
+const deliveryOptions = [
+    { label: 'Giao ngay', value: 'immediately' },
+    { label: 'Giao vào lúc', value: 'schedule-at' },
+];
+
+const pickupOptions = [
+    { label: 'Lấy ngay', value: 'immediately' },
+    { label: 'Lấy vào lúc', value: 'schedule-at' },
+];
+
 const DeliveryDetails = () => {
     const chosenMethod = useLayoutStore(state => state.chosenMethod);
     const setChosenMethod = useLayoutStore(state => state.setChosenMethod);
-    const [schedule, setSchedule] = useState('immediately');
-    const [selectedDate, setSelectedDate] = useState(new Date());
-    const [selectedTime, setSelectedTime] = useState();
-    const [paymentMethod, setPaymentMethod] = useState('cash');
+
+    // Zustand store for customer details
+    const { schedule, selectedDate, selectedTime, paymentMethod, note, setField } =
+        useCustomerDetails();
+
+    // Handlers
+    const handleScheduleChange = useCallback(
+        value => {
+            if (value === 'immediately') {
+                setField('selectedDate', '');
+                setField('selectedTime', '');
+            }
+            setField('schedule', value);
+        },
+        [setField],
+    );
 
     return (
         <>
@@ -48,12 +71,9 @@ const DeliveryDetails = () => {
                 <div className="flex gap-3 mb-[22px]">
                     <div className="flex-1">
                         <StyledSelect
-                            options={[
-                                { label: 'Giao ngay', value: 'immediately' },
-                                { label: 'Giao vào lúc', value: 'schedule-at' },
-                            ]}
+                            options={chosenMethod === 'delivery' ? deliveryOptions : pickupOptions}
                             value={schedule}
-                            onChange={setSchedule}
+                            onChange={handleScheduleChange}
                         />
                     </div>
                     {schedule === 'schedule-at' && (
@@ -61,8 +81,8 @@ const DeliveryDetails = () => {
                             <div className="flex-1 px-3 border border-solid border-[#dbdbdb] flex items-center h-[46px] rounded-lg overflow-hidden">
                                 <DatePicker
                                     closeOnScroll={e => e.target === document}
-                                    selected={selectedDate}
-                                    onChange={date => setSelectedDate(date)}
+                                    selected={selectedDate ? new Date(selectedDate) : new Date()}
+                                    onChange={value => setField('selectedDate', value)}
                                     className="w-full h-full outline-none select-none text-[15px]"
                                     dateFormat="dd/MM/yyyy"
                                     minDate={new Date()}
@@ -70,7 +90,10 @@ const DeliveryDetails = () => {
                                     placeholderText="Chọn ngày đặt chỗ"
                                 />
                             </div>
-                            <StyledTimePicker value={selectedTime} onChange={setSelectedTime} />
+                            <StyledTimePicker
+                                value={selectedTime}
+                                onChange={value => setField('selectedTime', value)}
+                            />
                         </>
                     )}
                 </div>
@@ -78,9 +101,11 @@ const DeliveryDetails = () => {
             <div>
                 <div className="font-semibold text-base mb-2">Ghi chú đơn hàng</div>
                 <textarea
-                    className="border border-solid border-[#dbdbdb] pt-2 px-3 text-[15px] rounded-md resize-none w-full outline-none"
+                    className="border border-solid border-[#dbdbdb] caret-primary pt-2 px-3 text-[15px] rounded-md resize-none w-full outline-none"
                     rows={4}
                     placeholder="Ghi chú đơn hàng"
+                    value={note}
+                    onChange={e => setField('note', e.target.value)}
                 ></textarea>
             </div>
             <div className="text-base uppercase mb-3 mt-5">HÌNH THỨC THANH TOÁN</div>
@@ -91,7 +116,7 @@ const DeliveryDetails = () => {
                         <button
                             key={method.value}
                             type="button"
-                            onClick={() => setPaymentMethod(method.value)}
+                            onClick={() => setField('paymentMethod', method.value)}
                             className={`relative flex items-center flex-1 border rounded-lg px-4 py-3 transition
             ${isActive ? 'border-primary bg-primary-50 shadow' : 'border-gray-200 bg-white'}
             hover:border-primary-400 focus:outline-none`}

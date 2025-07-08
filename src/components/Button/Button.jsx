@@ -7,6 +7,7 @@ import Link from 'next/link';
  * Props:
  * - children: ReactNode - Button label/content
  * - disabled: boolean - If true, button is disabled
+ * - isLoading: boolean - If true, show loader instead of content
  * - className: string - Additional classes
  * - variant: 'solid' | 'surface' | 'outline' - Button style variant (default: 'solid')
  * - href: string - If provided, renders as a Next.js Link
@@ -15,6 +16,7 @@ import Link from 'next/link';
 const Button = ({
     children,
     disabled = false,
+    isLoading = false,
     className = '',
     variant = 'solid',
     href,
@@ -35,13 +37,27 @@ const Button = ({
     const disabledStyles =
         'bg-[rgba(0,0,0,.12)] pointer-events-none text-[rgba(0,0,0,.26)] border border-transparent';
 
-    const computedClassName = [
-        baseStyles,
-        disabled ? disabledStyles : variantStyles[variant] || variantStyles.solid,
-        className,
-    ].join(' ');
+    // Loading state styles (distinct background, e.g., gray with opacity)
+    const loadingStyles =
+        'bg-[rgba(0,0,0,.08)] pointer-events-none text-[rgba(0,0,0,.26)] border border-transparent';
 
-    if (href && !disabled) {
+    // Compute className based on state
+    let appliedStyle = variantStyles[variant] || variantStyles.solid;
+    if (disabled) {
+        appliedStyle = disabledStyles;
+    }
+    if (isLoading) {
+        appliedStyle = loadingStyles;
+    }
+
+    const computedClassName = [baseStyles, appliedStyle, className].join(' ');
+
+    // Simple loader spinner
+    const Loader = () => (
+        <span className="inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+    );
+
+    if (href && !disabled && !isLoading) {
         // Render as Next.js Link
         return (
             <Link href={href} className={computedClassName} {...rest}>
@@ -52,8 +68,8 @@ const Button = ({
 
     // Render as button
     return (
-        <button className={computedClassName} disabled={disabled} {...rest}>
-            {children}
+        <button className={computedClassName} disabled={disabled || isLoading} {...rest}>
+            {isLoading ? <Loader /> : children}
         </button>
     );
 };
