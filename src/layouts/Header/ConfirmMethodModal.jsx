@@ -1,14 +1,16 @@
 import Button from '@/components/Button';
 import routes from '@/config/routes';
+import useCart from '@/stores/useCart';
 import useLayoutStore from '@/stores/useLayoutStore';
 import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
-import React, { memo, useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 
 const ConfirmMethodModal = ({ isOpenConfirmModal, closeConfirmModal, method }) => {
     const [isVisible, setIsVisible] = useState(false);
     const router = useRouter();
     const setChosenMethod = useLayoutStore(state => state.setChosenMethod);
+    const resetCart = useCart(state => state.resetCart);
     const modalRef = useRef();
 
     const handleClose = () => {
@@ -27,6 +29,7 @@ const ConfirmMethodModal = ({ isOpenConfirmModal, closeConfirmModal, method }) =
 
         setChosenMethod(method.key);
         closeConfirmModal();
+        resetCart();
     };
 
     useEffect(() => {

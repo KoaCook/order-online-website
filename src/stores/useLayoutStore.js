@@ -5,6 +5,7 @@ const useLayoutStore = create(set => ({
     isOpenProductModal: false,
     productModalId: null,
     isOpenCartDrawer: false,
+    isReservation: false,
     chosenMethod: 'delivery', // 'delivery' or 'pickup' or 'reservation'
 
     openProductModal(productId) {
@@ -40,7 +41,14 @@ const useLayoutStore = create(set => ({
         }));
     },
     setChosenMethod(method) {
-        set(state => ({ chosenMethod: method }));
+        if (method === 'reservation') {
+            set(state => ({ chosenMethod: method, isReservation: true }));
+        } else {
+            set(state => ({ chosenMethod: method, isReservation: false }));
+        }
+    },
+    setIsReservation(bool) {
+        set(state => ({ isReservation: bool }));
     },
 }));
 

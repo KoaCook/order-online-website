@@ -12,10 +12,8 @@ const initialState = {
     ward: '',
     address: '',
 
-    // Dining details
+    // Reservation details
     numOfCustomers: 0,
-    date: '',
-    time: '',
 
     paymentMethod: 'cash', // 'cash' or 'transfer'
     schedule: 'immediately',

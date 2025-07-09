@@ -15,6 +15,7 @@ const Cart = () => {
     const isOpenCartDrawer = useLayoutStore(state => state.isOpenCartDrawer);
     const openCartDrawer = useLayoutStore(state => state.openCartDrawer);
     const closeCartDrawer = useLayoutStore(state => state.closeCartDrawer);
+    const isReservation = useLayoutStore(state => state.isReservation);
 
     return (
         <>
@@ -76,7 +77,7 @@ const Cart = () => {
                     <div>
                         {products.length > 0 && (
                             <div className="px-5 pb-4 pt-3">
-                                <CartSummary />
+                                <CartSummary isShort={isReservation} />
                             </div>
                         )}
                         <div className="p-5 flex items-center gap-[15px] shadow-[0_-3px_6px_rgba(0,0,0,.1)]">
@@ -87,11 +88,11 @@ const Cart = () => {
                             </div>
                             <div className="flex-1">
                                 <Button
-                                    href={routes.ORDER}
+                                    href={isReservation ? routes.RESERVATION : routes.ORDER}
                                     onClick={closeCartDrawer}
                                     disabled={products.length === 0}
                                 >
-                                    THANH TOÁN
+                                    {isReservation ? 'đặt chỗ' : 'THANH TOÁN'}
                                 </Button>
                             </div>
                         </div>
