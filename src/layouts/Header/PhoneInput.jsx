@@ -6,6 +6,7 @@ const PhoneInput = ({ getData }) => {
         register,
         handleSubmit,
         formState: { errors },
+        setValue,
     } = useForm();
 
     const onSubmit = data => {
@@ -29,7 +30,11 @@ const PhoneInput = ({ getData }) => {
                                 },
                             })}
                         />
-                        <button className="w-8 h-8 px-1.5 text-primary">
+                        <button
+                            className="w-8 h-8 px-1.5 text-primary"
+                            type="button"
+                            onClick={() => setValue('phone', '')}
+                        >
                             <X size={22} />
                         </button>
                     </div>
