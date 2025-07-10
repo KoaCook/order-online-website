@@ -8,6 +8,8 @@ const notifications = {
     RESERVE_FAILED_MESSAGE: 'Vui lòng thử đặt chỗ lại.',
     ORDER_FAILED_TITLE: 'Đặt hàng thất bại',
     ORDER_FAILED_MESSAGE: 'Vui lòng thử đặt hàng lại.',
+    GET_FAILED_TITLE: 'Đã xảy ra lỗi ra',
+    GET_FAILED_MESSAGE: 'Không thể tải dữ liệu.',
 };
 
 export default notifications;

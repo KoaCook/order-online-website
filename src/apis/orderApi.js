@@ -26,6 +26,14 @@ const orderApi = {
             return res.json();
         });
     },
+
+    getOrdersHistory(phone) {
+        const url = `${process.env.NEXT_PUBLIC_SERVER_BASE_URL}/orders/order-online-system/order-history?phone=${phone}`;
+        return fetch(url).then(res => {
+            if (!res.ok) throw new Error('Get orders failed');
+            return res.json();
+        });
+    },
 };
 
 export default orderApi;

@@ -7,15 +7,26 @@ import useCart from '@/stores/useCart';
 import formatPrice from '@/utils/formatPrice';
 import CustomerDetails from './CustomerDetails';
 import ReserveBtn from './ReserveBtn';
+import { useRef } from 'react';
 
 const BookingOnlinePage = () => {
     const products = useCart(state => state.products);
+    const formRef = useRef();
+
+    // This function will be passed to ReserveBtn as onSubmit
+    // It triggers CustomerDetails' validation and returns form data if valid, or null if invalid
+    const handleExternalSubmit = async () => {
+        if (formRef.current && formRef.current.submitForm) {
+            return await formRef.current.submitForm();
+        }
+        return null;
+    };
 
     return (
         <div className="bg-paper dark:bg-dark flex-1">
             <div className="max-w-xl mx-auto px-3 py-7.5 flex justify-between dark:text-white">
                 <div className="w-[730px] bg-white dark:bg-[#1b1b1b] py-6 px-4 rounded-md">
-                    <CustomerDetails />
+                    <CustomerDetails ref={formRef} />
                 </div>
                 <div className="w-[400px]">
                     <div className="flex flex-col h-[500px] bg-white dark:bg-[#1b1b1b] rounded-md py-5 px-4">
@@ -61,8 +72,8 @@ const BookingOnlinePage = () => {
                             </div>
                         </div>
                     </div>
-
-                    <ReserveBtn />
+                    {/* Pass the submit handler to ReserveBtn */}
+                    <ReserveBtn onSubmit={handleExternalSubmit} />
                 </div>
             </div>
         </div>

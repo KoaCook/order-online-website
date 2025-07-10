@@ -9,28 +9,23 @@ import { useRouter } from 'next/navigation';
 import routes from '@/config/routes';
 import notifications from '@/constants/notifications';
 
-const OrderBtn = () => {
+const OrderBtn = ({ onSubmit }) => {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
     const chosenMethod = useLayoutStore(state => state.chosenMethod);
     const products = useCart(state => state.products);
     const addNotification = useNotifications(state => state.addNotification);
-    const { name, phone, city, address, district, ward, note, paymentMethod, setField } =
-        useCustomerDetails();
-
-    // Validation logic for required fields
-    const isDelivery = chosenMethod === 'delivery';
-    const isPickup = chosenMethod === 'pickup';
-
-    let isDisabled = false;
-
-    if (isDelivery) {
-        isDisabled = !name || !phone || !city || !address || !district || !ward;
-    } else if (isPickup) {
-        isDisabled = !name || !phone;
-    }
+    const { note, paymentMethod, setField } = useCustomerDetails();
 
     const handleSubmitOrder = async () => {
+        const formData = await onSubmit();
+        if (!formData) {
+            // Form is invalid, do not proceed
+            return;
+        }
+
+        const { address, city, district, name, phone, ward } = formData;
+
         setIsLoading(true);
         try {
             const totalPrice = products.reduce(
@@ -74,12 +69,7 @@ const OrderBtn = () => {
     };
 
     return (
-        <Button
-            className="mt-6"
-            disabled={isDisabled}
-            isLoading={isLoading}
-            onClick={handleSubmitOrder}
-        >
+        <Button className="mt-6" isLoading={isLoading} onClick={handleSubmitOrder}>
             Đặt hàng
         </Button>
     );

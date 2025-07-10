@@ -9,18 +9,21 @@ import useNotifications from '@/stores/useNotifications';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-const ReserveBtn = () => {
-    const { name, phone, numOfCustomers, selectedDate, selectedTime, note, setField } =
-        useCustomerDetails();
+const ReserveBtn = ({ onSubmit }) => {
+    const { setField } = useCustomerDetails();
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
     const chosenMethod = useLayoutStore(state => state.chosenMethod);
     const products = useCart(state => state.products);
     const addNotification = useNotifications(state => state.addNotification);
 
-    const isDisabled = !name || !phone || numOfCustomers === 0 || !selectedDate || !selectedTime;
-
     const handleSubmitReservation = async () => {
+        const formData = await onSubmit();
+        if (!formData) {
+            // Form is invalid, do not proceed
+            return;
+        }
+
         setIsLoading(true);
 
         try {
@@ -32,11 +35,11 @@ const ReserveBtn = () => {
             const items = products.map(({ name, ...rest }) => rest);
 
             const data = await orderApi.submitReservation({
-                customer_name: name,
-                phone,
-                num_of_customers: numOfCustomers,
+                customer_name: formData.name,
+                phone: formData.phone,
+                num_of_customers: formData.numOfCustomers,
                 items,
-                note,
+                note: formData.note,
                 total_price: totalPrice,
                 order_type: chosenMethod,
             });
@@ -58,12 +61,7 @@ const ReserveBtn = () => {
     };
 
     return (
-        <Button
-            className="mt-6"
-            disabled={isDisabled}
-            isLoading={isLoading}
-            onClick={handleSubmitReservation}
-        >
+        <Button className="mt-6" isLoading={isLoading} onClick={handleSubmitReservation}>
             Đặt chỗ
         </Button>
     );

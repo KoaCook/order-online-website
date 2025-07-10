@@ -1,8 +1,8 @@
 TODO: - Search function
 
-    - Order history function
+    - Order history function ✅
 
-    - Dark mode
+    - Dark mode ✅
 
     - Responsive design
 
@@ -10,6 +10,6 @@ TODO: - Search function
 
     - Loading state when navigating pages
 
-    - Validate input in /booking-online and /order-online and Order history
+    - Validate input in /booking-online and /order-online and Order history ✅
 
     - Promotion feature
