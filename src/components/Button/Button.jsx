@@ -35,7 +35,7 @@ const Button = ({
 
     // Disabled state styles
     const disabledStyles =
-        'bg-[rgba(0,0,0,.12)] pointer-events-none text-[rgba(0,0,0,.26)] border border-transparent';
+        'bg-[rgba(0,0,0,.12)] pointer-events-none text-[rgba(0,0,0,.26)] border border-transparent dark:bg-darkDivider dark:text-darkText';
 
     // Loading state styles (distinct background, e.g., gray with opacity)
     const loadingStyles =

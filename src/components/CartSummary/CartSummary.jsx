@@ -11,7 +11,7 @@ const CartSummary = ({ isShort }) => {
     const taxFee = totalPrice * 0.08;
 
     return (
-        <div className="text-base">
+        <div className="text-base dark:text-white">
             {!isShort ? (
                 <>
                     <div className="mb-3 flex items-center justify-between">
@@ -34,7 +34,7 @@ const CartSummary = ({ isShort }) => {
                         <div>Thuế GTGT (8%)</div>
                         <div className="font-semibold">{formatPrice(taxFee)} đ</div>
                     </div>
-                    <div className="my-4 border-t border-solid border-[rgba(0,0,0,0.12)]"></div>
+                    <div className="my-4 border-t border-solid border-[rgba(0,0,0,0.12)] dark:border-darkDivider"></div>
                     <div className="flex items-center justify-between">
                         <div className="flex items-center">
                             <div className="text-base font-semibold uppercase mr-1">Tổng</div>

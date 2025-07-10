@@ -20,18 +20,18 @@ const LanguageSwitcher = () => {
                             height={24}
                             className="mr-2.5"
                         />
-                        <ChevronDown size={14} />
+                        <ChevronDown size={14} className="dark:text-white" />
                     </button>
                 }
             >
-                <div className="absolute shadow-menu left-0 top-full bg-white py-2 rounded-md min-w-max">
+                <div className="absolute shadow-menu left-0 top-full bg-white dark:bg-lightDark py-2 rounded-md min-w-max dark:text-white">
                     <ul>
                         <li
                             role="button"
                             tabIndex={0}
                             className={clsx(
                                 'cursor-pointer flex items-center min-h-12 px-4 transition-colors duration-300',
-                                true && 'text-white bg-primary-light'
+                                true && 'text-primary bg-primary-light dark:bg-primary-dark-light',
                             )}
                         >
                             <Image src="/vietnam.svg" alt="Vietnam" width={34} height={24} />
@@ -43,7 +43,8 @@ const LanguageSwitcher = () => {
                             className={clsx(
                                 'cursor-pointer flex items-center min-h-12 px-4 transition-colors ',
                                 false && 'text-primary bg-primary-light',
-                                true && 'ripple hover:bg-[rgba(0,0,0,0.04)]'
+                                true &&
+                                    'ripple hover:bg-[rgba(0,0,0,0.04)!important] dark:hover:bg-[rgba(255,255,255,0.08)!important]',
                             )}
                         >
                             <Image src="/english.svg" alt="English" width={34} height={24} />

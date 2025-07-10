@@ -102,7 +102,7 @@ const DeliveryMethod = ({ handleCloseModal }) => {
                     />
                 </div>
                 <div className="flex justify-center">
-                    <div className="w-[368px]">
+                    <div className="w-[368px] mt-4">
                         <Button disabled={!district || !ward} onClick={handleChoose}>
                             ĐỒNG Ý
                         </Button>

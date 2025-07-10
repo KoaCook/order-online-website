@@ -41,16 +41,16 @@ const MethodSwitcher = () => {
                 animation="fade"
                 closeOnClick
                 anchor={
-                    <div className="h-11 border border-solid border-[#dbdbdb] px-4 w-[200px] flex items-center justify-between rounded-md cursor-pointer">
+                    <div className="h-11 border border-solid border-[#dbdbdb] dark:border-lightDark dark:bg-lightDark px-4 w-[200px] flex items-center justify-between rounded-md cursor-pointer dark:text-white">
                         <div className="flex-1 flex items-center">
                             {currentMethod.icon}
                             <span className="ml-3.5">{currentMethod.label}</span>
                         </div>
-                        <ChevronDown size={12} />
+                        <ChevronDown size={12} className="dark:text-darkGray" />
                     </div>
                 }
             >
-                <div className="absolute shadow-menu left-0 top-0 right-0 bg-white py-2 rounded-md">
+                <div className="absolute shadow-menu left-0 top-0 right-0 bg-white dark:bg-lightDark py-2 rounded-md">
                     <ul>
                         {METHODS.map(method => (
                             <li
@@ -60,8 +60,8 @@ const MethodSwitcher = () => {
                                 className={clsx(
                                     'cursor-pointer flex items-center min-h-12 px-4 transition-colors duration-300',
                                     chosenMethod === method.key
-                                        ? 'text-white bg-primary-light'
-                                        : 'ripple hover:bg-[rgba(0,0,0,0.04)]'
+                                        ? 'text-primary dark:bg-primary-dark-light bg-primary-light'
+                                        : 'ripple dark:text-white hover:bg-[rgba(0,0,0,0.04)!important] dark:hover:bg-[rgba(255,255,255,0.08)!important]',
                                 )}
                                 onClick={
                                     chosenMethod !== method.key

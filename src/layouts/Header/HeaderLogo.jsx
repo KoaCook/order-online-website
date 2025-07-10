@@ -25,7 +25,7 @@ const HeaderLogo = () => {
         <>
             {!isReservation ? (
                 <Image
-                    src="/logo_mixue.webp"
+                    src="/logo_final.webp"
                     alt="Logo"
                     width={182}
                     height={60}

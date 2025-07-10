@@ -4,6 +4,7 @@
 
 :root {
     --primary-color: #eb393f;
+    --dark-color: #171717;
 }
 
 @layer utilities {
@@ -33,6 +34,11 @@
 
 .ripple:hover {
     background: #fff radial-gradient(circle, transparent 1%, #fff 1%) center/15000%;
+}
+
+.dark .ripple:hover {
+    background: var(--dark-color) radial-gradient(circle, transparent 1%, var(--dark-color) 1%)
+        center/15000%;
 }
 
 .ripple-f5f5f5:hover {
@@ -70,6 +76,10 @@
 .carousel-root .control-dots,
 .carousel-root .carousel-status {
     display: none !important;
+}
+
+.dark .EZDrawer__overlay {
+    opacity: 0.7 !important;
 }
 
 .booking-online-products-list::-webkit-scrollbar {

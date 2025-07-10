@@ -26,7 +26,7 @@ const Cart = () => {
                 className="min-h-10 min-w-14 flex items-center justify-center rounded-lg ml-2.5 ripple px-3"
             >
                 <div className="relative">
-                    <ShoppingCart />
+                    <ShoppingCart className="dark:text-white" />
                     <AnimatePresence>
                         {products.length > 0 && (
                             <motion.div
@@ -50,21 +50,21 @@ const Cart = () => {
                 direction="right"
                 className="!w-drawer"
             >
-                <div className="relative flex flex-col h-full">
+                <div className="relative flex flex-col h-full dark:bg-lightDark">
                     <button
                         onClick={closeCartDrawer}
-                        className="absolute top-4 right-3 w-6 h-6 flex items-center justify-center rounded-full bg-[#bcbdbe]"
+                        className="absolute top-4 right-3 w-6 h-6 flex items-center justify-center rounded-full bg-[#bcbdbe] dark:bg-transparent"
                     >
                         <X size={16} className="text-paper" />
                     </button>
                     <div className="px-5 text-xl font-semibold">
-                        <div className="py-3.5 border-b border-solid border-[rgba(0,0,0,.12)]">
+                        <div className="py-3.5 border-b border-solid border-[rgba(0,0,0,.12)] dark:border-darkDivider dark:text-white">
                             Giỏ hàng
                         </div>
                     </div>
                     <div className="flex-1 pt-5 pr-5 pl-5 pb-2 overflow-y-scroll">
                         {products.length === 0 ? (
-                            <div className="flex items-center justify-center h-full text-base text-center">
+                            <div className="flex items-center justify-center h-full text-base text-center dark:text-white">
                                 Giỏ hàng đang trống. Vui lòng quay lại trang chủ để tiếp tục mua
                                 hàng.
                             </div>
@@ -82,7 +82,11 @@ const Cart = () => {
                         )}
                         <div className="p-5 flex items-center gap-[15px] shadow-[0_-3px_6px_rgba(0,0,0,.1)]">
                             <div className="flex-1">
-                                <Button variant="outline" href={routes.HOME}>
+                                <Button
+                                    variant="outline"
+                                    href={routes.HOME}
+                                    onClick={() => closeCartDrawer()}
+                                >
                                     THÊM MÓN
                                 </Button>
                             </div>

@@ -9,10 +9,10 @@ const ProductCartItem = ({ data }) => {
     const editQuantity = useCart(state => state.editQuantity);
 
     return (
-        <div className="relative">
+        <div className="relative dark:text-white">
             <div className="text-lg font-semibold w-[250px] mb-5">{data.name}</div>
             <button
-                className="h-8 w-8 text-[rgba(0,0,0,.54)] flex items-center justify-center ripple rounded-full absolute right-0 -top-1.5"
+                className="h-8 w-8 text-[rgba(0,0,0,.54)] dark:text-white flex items-center justify-center ripple rounded-full absolute right-0 -top-1.5"
                 onClick={() => removeProduct(data.id)}
             >
                 <Trash size={18} />
@@ -21,7 +21,7 @@ const ProductCartItem = ({ data }) => {
             <div className="flex items-center justify-between">
                 <div className="flex items-center">
                     <button
-                        className="flex items-center justify-center h-[34px] w-[34px] rounded-full text-primary border border-solid border-primary ripple"
+                        className="flex items-center justify-center h-[34px] w-[34px] rounded-full text-primary border border-solid border-primary ripple dark:bg-primary dark:text-white"
                         onClick={() => editQuantity(data.id, data.quantity - 1)}
                     >
                         <Minus size={18} />
@@ -30,7 +30,7 @@ const ProductCartItem = ({ data }) => {
                         {data.quantity}
                     </div>
                     <button
-                        className="flex items-center justify-center h-[34px] w-[34px] rounded-full text-primary border border-solid border-primary ripple"
+                        className="flex items-center justify-center h-[34px] w-[34px] rounded-full text-primary border border-solid border-primary ripple dark:bg-primary dark:text-white"
                         onClick={() => editQuantity(data.id, data.quantity + 1)}
                     >
                         <Plus size={18} />
@@ -38,7 +38,7 @@ const ProductCartItem = ({ data }) => {
                 </div>
                 <div className="text-base mr-1">{formatPrice(data.price * data.quantity)} đ</div>
             </div>
-            <hr className="my-4 border-t border-solid border-[rgba(0,0,0,.12)] w-full" />
+            <hr className="my-4 border-t border-solid border-[rgba(0,0,0,.12)] dark:border-darkDivider w-full" />
         </div>
     );
 };

@@ -17,32 +17,32 @@ const OrderHistory = () => {
                 onClick={toggleDrawer}
                 type="button"
                 data-ripple-dark="true"
-                className="min-h-10 min-w-10 flex items-center justify-center rounded-lg ml-2.5 ripple px-3"
+                className="min-h-10 min-w-10 flex items-center justify-center rounded-lg ml-2.5 ripple px-3 dark:text-white"
             >
                 <FileText />
                 <span className="ml-1.5">Tra cứu đơn hàng</span>
             </button>
 
             <Drawer open={isOpen} onClose={toggleDrawer} direction="right" className="!w-drawer">
-                <div className="relative flex flex-col h-full overflow-y-scroll">
+                <div className="relative flex flex-col h-full overflow-y-scroll dark:bg-lightDark">
                     <button
                         onClick={toggleDrawer}
-                        className="absolute top-4 right-3 w-6 h-6 flex items-center justify-center rounded-full bg-[#bcbdbe]"
+                        className="absolute top-4 right-3 w-6 h-6 flex items-center justify-center rounded-full bg-[#bcbdbe] dark:bg-transparent"
                     >
                         <X size={16} className="text-paper" />
                     </button>
                     <div className="px-5 text-xl font-semibold">
-                        <div className="py-3.5 border-b border-solid border-[rgba(0,0,0,.12)]">
+                        <div className="py-3.5 border-b border-solid border-[rgba(0,0,0,.12)] dark:text-white dark:border-darkDivider">
                             Lịch sử đơn hàng/ đặt chỗ
                         </div>
                     </div>
                     <div className="flex-1">
                         <div className="px-5 mt-4 mb-5 flex w-full">
                             <div className="flex-1">
-                                <div className="flex items-center pr-2.5 h-12 rounded-l-lg border-l border-b border-t border-solid border-[#dbdbdb]">
+                                <div className="flex items-center pr-2.5 h-12 rounded-l-lg border-l border-b border-t border-solid border-[#dbdbdb] dark:border-[#292929]">
                                     <input
                                         type="tel"
-                                        className="h-full text-[15px] outline-none pl-2.5 rounded-l-lg flex-1"
+                                        className="h-full text-[15px] outline-none pl-2.5 rounded-l-lg flex-1 dark:bg-transparent"
                                         placeholder="Số điện thoại"
                                     />
                                     <button className="w-8 h-8 px-1.5 text-primary">
@@ -59,23 +59,35 @@ const OrderHistory = () => {
                         </div>
 
                         <div className="px-5">
-                            <div className="pt-2.5 pr-3 pb-2.5 pl-2.5 border border-[rgb(219,219,219)] rounded-md text-base mb-4">
+                            <div className="pt-2.5 pr-3 pb-2.5 pl-2.5 border border-[rgb(219,219,219)] dark:border-darkDivider rounded-md text-base mb-4">
                                 <div className="flex justify-between mb-2">
-                                    <div className="text-[rgba(0,0,0,0.6)]">08:56 - 03/07/2025</div>
+                                    <div className="text-[rgba(0,0,0,0.6)] dark:text-white">
+                                        08:56 - 03/07/2025
+                                    </div>
                                     <div className="text-primary">Chưa xác nhận</div>
                                 </div>
-                                <div className="mb-2">1x Bimbim khoai tây Ostar</div>
+                                <div className="mb-2 dark:text-white">
+                                    1x Bimbim khoai tây Ostar
+                                </div>
                                 <div className="mb-2 text-primary">6.000 đ</div>
-                                <div className="font-bold">Tự đến lấy</div>
+                                <div className="font-bold dark:text-white dark:font-semibold">
+                                    Tự đến lấy
+                                </div>
                             </div>
-                            <div className="pt-2.5 pr-3 pb-2.5 pl-2.5 border border-[rgb(219,219,219)] rounded-md text-base mb-4">
+                            <div className="pt-2.5 pr-3 pb-2.5 pl-2.5 border border-[rgb(219,219,219)] dark:border-darkDivider rounded-md text-base mb-4">
                                 <div className="flex justify-between mb-2">
-                                    <div className="text-[rgba(0,0,0,0.6)]">08:56 - 03/07/2025</div>
+                                    <div className="text-[rgba(0,0,0,0.6)] dark:text-white">
+                                        08:56 - 03/07/2025
+                                    </div>
                                     <div className="text-primary">Chưa xác nhận</div>
                                 </div>
-                                <div className="mb-2">1x Bimbim khoai tây Ostar</div>
+                                <div className="mb-2 dark:text-white">
+                                    1x Bimbim khoai tây Ostar
+                                </div>
                                 <div className="mb-2 text-primary">6.000 đ</div>
-                                <div className="font-bold">Tự đến lấy</div>
+                                <div className="font-bold dark:text-white dark:font-semibold">
+                                    Tự đến lấy
+                                </div>
                             </div>
                         </div>
 
@@ -141,7 +153,7 @@ const OrderHistory = () => {
                                     />
                                 </g>
                             </svg>
-                            <span className="text-base text-center text-[rgba(0,0,0,.6)] mt-5">
+                            <span className="text-base text-center text-[rgba(0,0,0,.6)] dark:text-[hsla(0,0%,100%,.7)] font-light mt-5">
                                 Nhập số điện thoại để tìm kiếm đơn hàng
                             </span>
                         </div> */}

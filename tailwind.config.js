@@ -24,9 +24,17 @@ module.exports = {
             colors: {
                 primary: {
                     DEFAULT: '#eb393f',
-                    light: '#f28b8c',
+                    light: 'rgba(235,57,63,.16)',
+                    dark: {
+                        light: 'rgba(235,57,63,.32)',
+                    },
                 },
                 paper: '#f9f9f9',
+                dark: '#171717',
+                lightDark: '#1e1e1e',
+                darkGray: '#707070',
+                darkDivider: 'hsla(0,0%,100%,.12)',
+                darkText: 'hsla(0,0%,100%,.3)',
             },
             transitionTimingFunction: {
                 ease: 'ease',
@@ -37,4 +45,5 @@ module.exports = {
             },
         },
     },
+    darkMode: 'class',
 };
