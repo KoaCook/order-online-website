@@ -1,24 +1,30 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
 import menuApi from '@/apis/menuApi';
+import menuItemApi from '@/apis/menuItemApi';
 import Button from '@/components/Button';
 import ErrorAlert from '@/components/ErrorAlert';
+import LoadingState from '@/components/LoadingState';
 import ProductItem, { ProductItemSkeleton } from '@/components/ProductItem';
 import ProductsCarousel from '@/components/ProductsCarousel';
-import LoadingState from '@/components/LoadingState';
+import { useSearchParams } from 'next/navigation';
 
 const ProductsList = () => {
     const searchParams = useSearchParams();
     const categorySlug = searchParams.get('category');
+    const searchQuery = searchParams.get('search');
 
-    // Fetch only what's needed
-    const {
-        data: rawData,
-        error,
-        isLoading,
-        isValidating,
-    } = categorySlug ? menuApi.useMenusCategoryList(categorySlug) : menuApi.useMenusList();
+    // Decide which hook to use based on query params
+    let dataHook;
+    if (categorySlug) {
+        dataHook = menuApi.useMenusCategoryList(categorySlug);
+    } else if (searchQuery) {
+        dataHook = menuItemApi.useItemsSearch(searchQuery);
+    } else {
+        dataHook = menuApi.useMenusList();
+    }
+
+    const { data: rawData, error, isLoading, isValidating } = dataHook;
 
     if (isLoading || isValidating) {
         return (
@@ -45,11 +51,17 @@ const ProductsList = () => {
             {categorySlug ? (
                 <div className="mb-7.5">
                     <h2 className="font-semibold text-2xl dark:text-white">{data.label}</h2>
-                    <div className="mt-7 grid grid-cols-5 gap-7.5">
+                    <div className="mt-7 grid grid-cols-4 lg:grid-cols-5 gap-7.5">
                         {data.items.map(item => (
                             <ProductItem key={item.id} data={item} />
                         ))}
                     </div>
+                </div>
+            ) : searchQuery ? (
+                <div className="mt-7 grid grid-cols-4 lg:grid-cols-5 gap-7.5">
+                    {data.map(item => (
+                        <ProductItem key={item.id} data={item} />
+                    ))}
                 </div>
             ) : (
                 data.map(product => {
@@ -65,7 +77,7 @@ const ProductsList = () => {
                                 <h2 className="font-semibold text-2xl dark:text-white">
                                     {product.label}
                                 </h2>
-                                <div className="mt-7 grid grid-cols-5 gap-7.5">
+                                <div className="mt-7 grid grid-cols-4 lg:grid-cols-5 gap-7.5">
                                     {product.items.map(item => (
                                         <ProductItem key={item.id} data={item} />
                                     ))}
