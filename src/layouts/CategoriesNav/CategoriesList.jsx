@@ -85,9 +85,9 @@ const CategoriesList = () => {
                     className={clsx(
                         'px-4 mr-2 rounded-md h-10 text-sm font-normal whitespace-nowrap outline-none',
                         category.slug !== selectedCategorySlug &&
-                            'bg-[#f5f5f5] text-black ripple-unactive-category-btn',
+                            'bg-[#f5f5f5] dark:bg-[#272727] dark:text-white text-black ripple-unactive-category-btn',
                         category.slug === selectedCategorySlug &&
-                            'bg-primary text-white ripple-primary'
+                            'bg-primary text-white ripple-primary',
                     )}
                 >
                     {category.label}

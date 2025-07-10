@@ -29,13 +29,13 @@ const Button = ({
     // Variant styles
     const variantStyles = {
         solid: 'bg-primary text-white ripple-primary',
-        surface: 'bg-transparent text-black border border-transparent ripple',
+        surface: 'bg-transparent text-black border border-transparent ripple dark:text-white',
         outline: 'bg-transparent text-primary border border-primary ripple',
     };
 
     // Disabled state styles
     const disabledStyles =
-        'bg-[rgba(0,0,0,.12)] pointer-events-none text-[rgba(0,0,0,.26)] border border-transparent dark:bg-darkDivider dark:text-darkText';
+        'bg-[rgba(0,0,0,.12)] pointer-events-none text-[rgba(0,0,0,.26)] border border-transparent dark:bg-darkDivider dark:text-darkText cursor-not-allowed';
 
     // Loading state styles (distinct background, e.g., gray with opacity)
     const loadingStyles =

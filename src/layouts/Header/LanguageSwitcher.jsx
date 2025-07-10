@@ -24,7 +24,7 @@ const LanguageSwitcher = () => {
                     </button>
                 }
             >
-                <div className="absolute shadow-menu left-0 top-full bg-white dark:bg-lightDark py-2 rounded-md min-w-max dark:text-white">
+                <div className="absolute shadow-menu left-0 z-10 top-full bg-white dark:bg-lightDark py-2 rounded-md min-w-max dark:text-white">
                     <ul>
                         <li
                             role="button"

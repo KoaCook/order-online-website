@@ -21,7 +21,7 @@ const ProductCartItem = ({ data }) => {
             <div className="flex items-center justify-between">
                 <div className="flex items-center">
                     <button
-                        className="flex items-center justify-center h-[34px] w-[34px] rounded-full text-primary border border-solid border-primary ripple dark:bg-primary dark:text-white"
+                        className="flex items-center justify-center h-[34px] w-[34px] rounded-full text-primary border border-solid border-primary ripple-quantity-btn dark:bg-primary dark:text-white"
                         onClick={() => editQuantity(data.id, data.quantity - 1)}
                     >
                         <Minus size={18} />
@@ -30,7 +30,7 @@ const ProductCartItem = ({ data }) => {
                         {data.quantity}
                     </div>
                     <button
-                        className="flex items-center justify-center h-[34px] w-[34px] rounded-full text-primary border border-solid border-primary ripple dark:bg-primary dark:text-white"
+                        className="flex items-center justify-center h-[34px] w-[34px] rounded-full text-primary border border-solid border-primary ripple-quantity-btn dark:bg-primary dark:text-white"
                         onClick={() => editQuantity(data.id, data.quantity + 1)}
                     >
                         <Plus size={18} />

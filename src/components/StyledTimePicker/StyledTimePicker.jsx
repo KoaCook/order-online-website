@@ -86,19 +86,23 @@ const StyledTimePicker = ({
     }, [options]);
 
     // Disabled styles
-    const disabledContainer = 'bg-gray-100 cursor-not-allowed opacity-80';
-    const disabledSelect = 'text-gray-400 bg-gray-100 cursor-not-allowed';
+    const disabledContainer =
+        'bg-gray-100 cursor-not-allowed opacity-80 dark:bg-[#23272f] dark:opacity-60 dark:border-[#292929]';
+    const disabledSelect =
+        'text-gray-400 dark:text-[#777] bg-gray-100 dark:bg-[#23272f] cursor-not-allowed';
 
     return (
         <div
             className={`relative flex items-center px-2.5 py-3 border rounded-lg transition group ${
-                disabled ? disabledContainer : 'bg-white cursor-pointer'
+                disabled
+                    ? disabledContainer
+                    : 'bg-white cursor-pointer dark:bg-lightDark dark:border-[#292929]'
             } ${className}`}
         >
             <select
                 value={value || (options.length > 0 ? options[0].value : '')}
                 onChange={e => onChange(e.target.value)}
-                className={`appearance-none bg-transparent w-full pr-8 text-sm text-gray-900 focus:outline-none ${
+                className={`appearance-none bg-transparent w-full pr-8 text-sm text-gray-900 dark:text-white focus:outline-none ${
                     disabled ? disabledSelect : ''
                 }`}
                 disabled={disabled || options.length === 0}

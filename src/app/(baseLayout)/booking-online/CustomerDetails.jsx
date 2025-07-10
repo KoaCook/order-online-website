@@ -17,25 +17,25 @@ const CustomerDetails = () => {
                     Thông tin khách hàng <span className="text-red-500">*</span>
                 </div>
                 <div className="flex mb-4">
-                    <div className="px-3 border border-solid border-[#dbdbdb] flex items-center h-10 rounded-lg mr-3 flex-1 overflow-hidden">
+                    <div className="px-3 border border-solid border-[#dbdbdb] dark:border-[#292929] dark:bg-[#1e1e1e] flex items-center h-10 rounded-lg mr-3 flex-1 overflow-hidden">
                         <span className="text-primary mr-2.5 w-6 h-6 flex items-center">
                             <UserIcon />
                         </span>
                         <input
                             type="text"
-                            className="py-2 w-full flex-1 caret-primary text-[15px] outline-none"
+                            className="py-2 w-full flex-1 caret-primary text-[15px] outline-none bg-transparent"
                             placeholder="Họ và tên"
                             value={name}
                             onChange={e => setField('name', e.target.value)}
                         />
                     </div>
-                    <div className="px-3 border border-solid border-[#dbdbdb] flex items-center h-10 rounded-lg flex-1 overflow-hidden">
+                    <div className="px-3 border border-solid border-[#dbdbdb] dark:border-[#292929] dark:bg-[#1e1e1e] flex items-center h-10 rounded-lg flex-1 overflow-hidden">
                         <span className="text-primary mr-2.5 w-6 h-6 flex items-center">
                             <PhoneIcon />
                         </span>
                         <input
                             type="text"
-                            className="py-2 w-full flex-1 caret-primary text-[15px] outline-none"
+                            className="py-2 w-full flex-1 caret-primary text-[15px] outline-none bg-transparent"
                             placeholder="Số điện thoại"
                             value={phone}
                             onChange={e => setField('phone', e.target.value)}
@@ -48,7 +48,7 @@ const CustomerDetails = () => {
                 <div className="flex mb-4">
                     <div className="flex-1">
                         <div className="font-semibold text-base mb-2">Số khách</div>
-                        <div className="px-3 border border-solid border-[#dbdbdb] flex items-center h-10 rounded-lg mr-3 overflow-hidden">
+                        <div className="px-3 border border-solid border-[#dbdbdb] dark:border-[#292929] dark:bg-[#1e1e1e] flex items-center h-10 rounded-lg mr-3 overflow-hidden">
                             <span className="text-primary mr-2.5 w-6 h-6 flex items-center">
                                 <GroupIcon />
                             </span>
@@ -56,7 +56,7 @@ const CustomerDetails = () => {
                                 type="number"
                                 min="0"
                                 max="50"
-                                className="py-2 w-full flex-1 caret-primary text-[15px] outline-none"
+                                className="py-2 w-full flex-1 caret-primary text-[15px] outline-none bg-transparent"
                                 value={numOfCustomers}
                                 onChange={e => setField('numOfCustomers', Number(e.target.value))}
                             />
@@ -66,7 +66,7 @@ const CustomerDetails = () => {
                         <div className="font-semibold text-base mb-2">
                             Ngày đến <span className="text-red-500">*</span>
                         </div>
-                        <div className="px-3 border border-solid border-[#dbdbdb] flex items-center h-10 rounded-lg overflow-hidden">
+                        <div className="px-3 border border-solid border-[#dbdbdb] dark:border-[#292929] dark:bg-[#1e1e1e] flex items-center h-10 rounded-lg overflow-hidden">
                             <span className="text-primary mr-2.5 w-6 h-6 flex items-center">
                                 <Calendar />
                             </span>
@@ -76,7 +76,7 @@ const CustomerDetails = () => {
                                 onChange={date =>
                                     setField('selectedDate', date ? date.toISOString() : '')
                                 }
-                                className="w-full outline-none select-none text-[15px]"
+                                className="w-full outline-none select-none text-[15px] bg-transparent"
                                 dateFormat="dd/MM/yyyy"
                                 minDate={new Date()}
                                 preventOpenOnFocus={true}
@@ -98,7 +98,7 @@ const CustomerDetails = () => {
                 <div>
                     <div className="font-semibold text-base mb-2">Ghi chú</div>
                     <textarea
-                        className="border border-solid border-[#dbdbdb] pt-2 px-3 text-[15px] rounded-md resize-none w-full outline-none"
+                        className="border border-solid border-[#dbdbdb] dark:border-[#292929] dark:bg-[#1e1e1e] pt-2 px-3 text-[15px] rounded-md resize-none w-full outline-none bg-transparent"
                         rows={4}
                         placeholder="Ghi chú"
                         value={note}

@@ -26,13 +26,13 @@ const BookingOnlineComplete = () => {
     };
 
     return (
-        <div className="max-w-xl mx-auto">
+        <div className="max-w-xl mx-auto dark:text-white">
             <div className="flex items-center justify-center flex-col py-10">
                 <div className="uppercase font-bold text-base mb-1.5">GỬI YÊU CẦU THÀNH CÔNG</div>
                 <div className="text-base">Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất</div>
             </div>
             <div className="flex justify-between py-6">
-                <div className="w-[650px] shadow-booking-online-complete-box px-6 py-[22px] rounded-md">
+                <div className="w-[650px] shadow-booking-online-complete-box dark:shadow-[0_3px_6px_#292929] px-6 py-[22px] rounded-md">
                     <div className="text-2xl mb-4 font-semibold">Thông tin đặt chỗ</div>
                     <div className="text-base pb-4">
                         <div className="mb-3 font-semibold">Nhà hàng</div>

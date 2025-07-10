@@ -22,7 +22,7 @@ const ProductsCarousel = ({ data }) => {
     return (
         <>
             <div className="flex items-center justify-between">
-                <h2 className="font-semibold text-2xl">{data.label}</h2>
+                <h2 className="font-semibold text-2xl dark:text-white">{data.label}</h2>
                 <div className="flex">
                     <button
                         className="h-10 w-10 ripple rounded-full flex items-center justify-center"

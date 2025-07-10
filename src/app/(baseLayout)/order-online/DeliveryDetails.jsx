@@ -101,7 +101,7 @@ const DeliveryDetails = () => {
             <div>
                 <div className="font-semibold text-base mb-2">Ghi chú đơn hàng</div>
                 <textarea
-                    className="border border-solid border-[#dbdbdb] caret-primary pt-2 px-3 text-[15px] rounded-md resize-none w-full outline-none"
+                    className="border border-solid border-[#dbdbdb] dark:border-[#292929] dark:bg-[#1e1e1e] caret-primary pt-2 px-3 text-[15px] rounded-md resize-none w-full outline-none"
                     rows={4}
                     placeholder="Ghi chú đơn hàng"
                     value={note}
@@ -117,8 +117,12 @@ const DeliveryDetails = () => {
                             key={method.value}
                             type="button"
                             onClick={() => setField('paymentMethod', method.value)}
-                            className={`relative flex items-center flex-1 border rounded-lg px-4 py-3 transition
-            ${isActive ? 'border-primary bg-primary-50 shadow' : 'border-gray-200 bg-white'}
+                            className={`relative flex items-center flex-1 border rounded-lg px-4 py-3 transition dark:bg-[#3a3b3c] dark:border-transparent
+            ${
+                isActive
+                    ? 'border-primary dark:border-primary bg-primary-50 shadow'
+                    : 'border-gray-200 bg-white'
+            }
             hover:border-primary-400 focus:outline-none`}
                             style={{ minWidth: 0 }}
                         >

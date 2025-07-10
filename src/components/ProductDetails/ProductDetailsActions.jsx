@@ -24,7 +24,7 @@ const ProductDetailsActions = ({ data, error, isLoading, isValidating, onClose }
         <>
             <div
                 className={clsx(
-                    'p-5 bg-paper flex-1 overflow-y-scroll',
+                    'p-5 bg-paper dark:bg-[#1b1b1b] flex-1 overflow-y-scroll dark:text-white',
                     (isLoading || isValidating) && 'pointer-events-none select-none opacity-60',
                 )}
             >
@@ -108,19 +108,19 @@ const ProductDetailsActions = ({ data, error, isLoading, isValidating, onClose }
                         <div className="mt-10 mb-2">
                             <textarea
                                 placeholder="Ghi chú"
-                                className="px-3 pt-2 text-[15px] bg-white border border-solid border-[#dbdbdb] rounded-lg resize-none w-full outline-none caret-primary"
+                                className="px-3 pt-2 text-[15px] bg-white border border-solid border-[#dbdbdb] dark:bg-transparent dark:border-[#292929] rounded-lg resize-none w-full outline-none caret-primary"
                                 rows={3}
                             ></textarea>
                         </div>
                     </>
                 )}
             </div>
-            <div className="p-5 bg-white flex items-center justify-between">
+            <div className="p-5 bg-white dark:bg-dark dark:text-white flex items-center justify-between">
                 <div className="flex items-center">
                     <span className="text-base mr-3">Số lượng</span>
                     <div className="flex items-center">
                         <button
-                            className="flex items-center justify-center h-[34px] w-[34px] rounded-full text-primary border border-solid border-primary ripple"
+                            className="flex items-center justify-center h-[34px] w-[34px] rounded-full text-primary border border-solid dark:bg-primary dark:text-white border-primary ripple-quantity-btn"
                             onClick={() => {
                                 if (quantity > 1) {
                                     setQuantity(quantity - 1);
@@ -133,7 +133,7 @@ const ProductDetailsActions = ({ data, error, isLoading, isValidating, onClose }
                             {quantity}
                         </div>
                         <button
-                            className="flex items-center justify-center h-[34px] w-[34px] rounded-full text-primary border border-solid border-primary ripple"
+                            className="flex items-center justify-center h-[34px] w-[34px] rounded-full text-primary border border-solid dark:bg-primary dark:text-white border-primary ripple-quantity-btn"
                             onClick={() => setQuantity(quantity + 1)}
                         >
                             <Plus size={18} />

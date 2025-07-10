@@ -44,7 +44,7 @@ const ProductsList = () => {
         <>
             {categorySlug ? (
                 <div className="mb-7.5">
-                    <h2 className="font-semibold text-2xl">{data.label}</h2>
+                    <h2 className="font-semibold text-2xl dark:text-white">{data.label}</h2>
                     <div className="mt-7 grid grid-cols-5 gap-7.5">
                         {data.items.map(item => (
                             <ProductItem key={item.id} data={item} />
@@ -62,7 +62,9 @@ const ProductsList = () => {
                     } else {
                         return (
                             <div className="mb-7.5" key={product.id}>
-                                <h2 className="font-semibold text-2xl">{product.label}</h2>
+                                <h2 className="font-semibold text-2xl dark:text-white">
+                                    {product.label}
+                                </h2>
                                 <div className="mt-7 grid grid-cols-5 gap-7.5">
                                     {product.items.map(item => (
                                         <ProductItem key={item.id} data={item} />

@@ -69,10 +69,12 @@ const DeliveryMethod = ({ handleCloseModal }) => {
                                 </span>
                                 {/* Branch info */}
                                 <div>
-                                    <div className="font-medium text-sm text-gray-900 group-hover:text-primary">
+                                    <div className="font-medium text-sm text-gray-900 dark:text-white group-hover:text-primary">
                                         {branch.name}
                                     </div>
-                                    <div className="text-sm text-gray-500">{branch.address}</div>
+                                    <div className="text-sm text-gray-500 dark:text-gray-400">
+                                        {branch.address}
+                                    </div>
                                 </div>
                             </label>
                         );

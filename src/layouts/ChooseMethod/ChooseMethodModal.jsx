@@ -58,7 +58,7 @@ const ChooseMethodModal = () => {
     }, []);
 
     const modalClass = clsx(
-        'relative z-10 w-full max-w-[960px] max-h-[90%] m-6 shadow-product-details-modal bg-paper rounded-md transition-all ease-ease duration-300 overflow-y-scroll',
+        'relative z-10 w-full max-w-[960px] max-h-[90%] m-6 shadow-product-details-modal bg-paper rounded-md transition-all ease-ease duration-300 overflow-y-scroll dark:text-white dark:bg-lightDark',
         isVisible && 'opacity-100 scale-100',
         !isVisible && 'opacity-0 scale-75',
         focusAnim && 'animate-focus-modal',
@@ -70,7 +70,7 @@ const ChooseMethodModal = () => {
         <div className="fixed top-0 right-0 bottom-0 left-0 z-[999] flex items-center justify-center">
             <div
                 className={clsx(
-                    'absolute top-0 left-0 w-full h-full bg-[rgba(33,33,33,0.46)] -z-10 transition-all duration-300 ease-ease ',
+                    'absolute top-0 left-0 w-full h-full bg-[rgba(33,33,33,0.46)] dark:bg-[rgba(0,0,0,0.7)] -z-10 transition-all duration-300 ease-ease ',
                     isVisible && 'opacity-100',
                     !isVisible && 'opacity-0',
                 )}

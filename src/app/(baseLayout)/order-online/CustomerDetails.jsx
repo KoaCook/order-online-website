@@ -44,25 +44,25 @@ const CustomerDetails = () => {
                 Thông tin người nhận <span className="text-red-500">*</span>
             </div>
             <div className="flex">
-                <div className="px-3 border border-solid border-[#dbdbdb] flex items-center h-10 rounded-lg mr-3 flex-1 overflow-hidden">
+                <div className="px-3 border border-solid border-[#dbdbdb] dark:border-[#292929] dark:bg-[#1e1e1e] flex items-center h-10 rounded-lg mr-3 flex-1 overflow-hidden">
                     <span className="text-primary mr-2.5 w-6 h-6 flex items-center">
                         <UserIcon />
                     </span>
                     <input
                         type="text"
-                        className="py-2 w-full flex-1 caret-primary text-[15px] outline-none"
+                        className="py-2 w-full flex-1 caret-primary text-[15px] outline-none bg-transparent"
                         placeholder="Họ và tên"
                         value={name}
                         onChange={e => setField('name', e.target.value)}
                     />
                 </div>
-                <div className="px-3 border border-solid border-[#dbdbdb] flex items-center h-10 rounded-lg flex-1 overflow-hidden">
+                <div className="px-3 border border-solid border-[#dbdbdb] dark:border-[#292929] dark:bg-[#1e1e1e] flex items-center h-10 rounded-lg flex-1 overflow-hidden">
                     <span className="text-primary mr-2.5 w-6 h-6 flex items-center">
                         <PhoneIcon />
                     </span>
                     <input
                         type="text"
-                        className="py-2 w-full flex-1 caret-primary text-[15px] outline-none"
+                        className="py-2 w-full flex-1 caret-primary text-[15px] outline-none bg-transparent"
                         placeholder="Số điện thoại"
                         value={phone}
                         onChange={e => setField('phone', e.target.value)}
@@ -80,13 +80,13 @@ const CustomerDetails = () => {
                         variants={deliveryVariants}
                         transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
                     >
-                        <div className="px-3 mt-[22px] border border-solid border-[#dbdbdb] flex items-center h-10 rounded-lg overflow-hidden mb-[22px]">
+                        <div className="px-3 mt-[22px] border border-solid border-[#dbdbdb] dark:border-[#292929] dark:bg-[#1e1e1e] flex items-center h-10 rounded-lg overflow-hidden mb-[22px]">
                             <span className="text-primary mr-2.5 w-7 h-6 flex items-center -ml-1">
                                 <LocationIcon />
                             </span>
                             <input
                                 type="text"
-                                className="py-2 w-full flex-1 caret-primary text-[15px] outline-none"
+                                className="py-2 w-full flex-1 caret-primary text-[15px] outline-none bg-transparent"
                                 placeholder="Địa chỉ"
                                 value={address}
                                 onChange={e => setDeliveryDetails({ address: e.target.value })}

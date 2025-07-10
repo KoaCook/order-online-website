@@ -13,9 +13,9 @@ const OrderOnlinePage = () => {
     const products = useCart(state => state.products);
 
     return (
-        <div className="bg-paper flex-1">
-            <div className="max-w-xl mx-auto px-3 py-7.5 flex justify-between">
-                <div className="w-[730px] h-full bg-white py-6 px-4 rounded-md">
+        <div className="bg-paper dark:bg-dark flex-1">
+            <div className="max-w-xl mx-auto px-3 py-7.5 flex justify-between dark:text-white">
+                <div className="w-[730px] h-full bg-white dark:bg-[#1b1b1b] py-6 px-4 rounded-md">
                     <div className="mt-6">
                         <CustomerDetails />
                     </div>
@@ -24,7 +24,7 @@ const OrderOnlinePage = () => {
                     </div>
                 </div>
                 <div className="w-[400px] h-full">
-                    <div className="flex flex-col h-[650px] bg-white rounded-md py-5 px-4">
+                    <div className="flex flex-col h-[650px] bg-white dark:bg-[#1b1b1b] rounded-md py-5 px-4">
                         <div className="mb-4 flex items-center justify-between">
                             <div className="text-base uppercase">Giỏ hàng</div>
                             <div className="w-fit">

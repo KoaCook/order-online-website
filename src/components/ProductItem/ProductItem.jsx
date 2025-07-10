@@ -12,7 +12,7 @@ const ProductItem = ({ data }) => {
     };
 
     return (
-        <div className="h-full rounded-md shadow-product-item bg-white overflow-hidden flex flex-col">
+        <div className="h-full rounded-md shadow-product-item bg-white dark:bg-[#1b1b1b] dark:text-white overflow-hidden flex flex-col">
             <div className="w-full aspect-[4/3] overflow-hidden relative">
                 <div
                     style={{ backgroundImage: 'url(/fallback_product_img.png)' }}

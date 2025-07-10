@@ -36,14 +36,14 @@ const HeaderLogo = () => {
                     {pathname === routes.RESERVATION ? (
                         <button
                             onClick={handleGoHomeFromReservation}
-                            className="min-h-10 min-w-10 flex items-center justify-center rounded-lg ml-2.5 ripple"
+                            className="min-h-10 min-w-10 flex items-center justify-center rounded-lg ml-2.5 dark:text-white ripple"
                         >
                             <Home size={22} />
                         </button>
                     ) : (
                         <Link
                             href={routes.RESERVATION}
-                            className="min-h-10 min-w-10 flex items-center justify-center rounded-lg ml-2.5 ripple"
+                            className="min-h-10 min-w-10 flex items-center justify-center rounded-lg ml-2.5 dark:text-white ripple"
                         >
                             <ArrowLeft size={22} />
                         </Link>

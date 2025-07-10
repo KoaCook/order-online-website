@@ -12,13 +12,13 @@ const BookingOnlinePage = () => {
     const products = useCart(state => state.products);
 
     return (
-        <div className="bg-paper flex-1">
-            <div className="max-w-xl mx-auto px-3 py-7.5 flex justify-between">
-                <div className="w-[730px] bg-white py-6 px-4 rounded-md">
+        <div className="bg-paper dark:bg-dark flex-1">
+            <div className="max-w-xl mx-auto px-3 py-7.5 flex justify-between dark:text-white">
+                <div className="w-[730px] bg-white dark:bg-[#1b1b1b] py-6 px-4 rounded-md">
                     <CustomerDetails />
                 </div>
                 <div className="w-[400px]">
-                    <div className="flex flex-col h-[500px] bg-white rounded-md py-5 px-4">
+                    <div className="flex flex-col h-[500px] bg-white dark:bg-[#1b1b1b] rounded-md py-5 px-4">
                         <div className="mb-4 flex items-center justify-between">
                             <div className="text-base uppercase">MÓN ĐẶT TRƯỚC</div>
                             <div className="w-fit">
