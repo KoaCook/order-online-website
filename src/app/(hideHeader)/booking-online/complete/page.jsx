@@ -26,15 +26,17 @@ const BookingOnlineComplete = () => {
     };
 
     return (
-        <div className="max-w-xl mx-auto dark:text-white">
+        <div className="md:max-w-[900px] xl:max-w-xl mx-auto dark:text-white">
             <div className="flex items-center justify-center flex-col py-10">
                 <div className="uppercase font-bold text-base mb-1.5">GỬI YÊU CẦU THÀNH CÔNG</div>
                 <div className="text-base">Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất</div>
             </div>
-            <div className="flex justify-between py-6">
-                <div className="w-[650px] shadow-booking-online-complete-box dark:shadow-[0_3px_6px_#292929] px-6 py-[22px] rounded-md">
-                    <div className="text-2xl mb-4 font-semibold">Thông tin đặt chỗ</div>
-                    <div className="text-base pb-4">
+            <div className="md:flex justify-between py-6">
+                <div className="md:w-[650px] md:shadow-booking-online-complete-box md:dark:shadow-[0_3px_6px_#292929] px-4 md:px-6 py-[22px] rounded-md">
+                    <div className="text-base md:text-2xl mb-4 font-semibold">
+                        Thông tin đặt chỗ
+                    </div>
+                    <div className="text-sm md:text-base pb-4">
                         <div className="mb-3 font-semibold">Nhà hàng</div>
                         <div className="mb-2">MISA SKYBAR - HCT</div>
                         <div className="mb-2">
@@ -42,12 +44,12 @@ const BookingOnlineComplete = () => {
                             Thị trấn Cát Tiên, Huyện Cát Tiên, Lâm Đồng
                         </div>
                     </div>
-                    <div className="text-base pb-4">
+                    <div className="text-sm md:text-base pb-4">
                         <div className="mb-3 font-semibold">Thông tin khách hàng</div>
                         <div className="mb-2">{name}</div>
                         <div className="mb-2">Số điện thoại: {phone}</div>
                     </div>
-                    <div className="text-base">
+                    <div className="text-sm md:text-base">
                         <div className="mb-3 font-semibold">Thông tin đặt chỗ</div>
                         <div className="mb-2">Số khách: {numOfCustomers}</div>
                         <div className="mb-2">
@@ -56,8 +58,8 @@ const BookingOnlineComplete = () => {
                         {note && <div className="mb-2">Ghi chú: {note}</div>}
                     </div>
                 </div>
-                <div className="w-[400px] pl-[22px] pt-2.5 pr-8 flex flex-col">
-                    <div className="mb-3.5 text-2xl font-semibold">
+                <div className="md:w-[400px] pl-4 pr-4 md:pl-[22px] pt-2.5 md:pr-8 flex flex-col">
+                    <div className="mb-3.5 text-base md:text-2xl font-semibold">
                         Yêu cầu đặt chỗ <span className="text-primary">DC{createdOrderId}</span>
                     </div>
                     {products.length > 0 && (
@@ -66,7 +68,7 @@ const BookingOnlineComplete = () => {
                                 {products.map(item => (
                                     <div key={item.id} className="mb-[15px] flex justify-between">
                                         <div>
-                                            <div className="text-base font-semibold">
+                                            <div className="text-sm md:text-base font-semibold">
                                                 {item.quantity} x {item.name}
                                             </div>
                                             {/* <ul className="text-sm pl-2.5">
@@ -75,7 +77,7 @@ const BookingOnlineComplete = () => {
                                     </li>
                                 </ul> */}
                                         </div>
-                                        <div className="text-base">
+                                        <div className="text-sm md:text-base">
                                             {formatPrice(item.quantity * item.price)} đ
                                         </div>
                                     </div>
@@ -91,7 +93,7 @@ const BookingOnlineComplete = () => {
                                         món
                                     </div>
                                 </div>
-                                <div className="text-2xl font-semibold">
+                                <div className="text-base md:text-2xl font-semibold">
                                     {formatPrice(
                                         products.reduce(
                                             (sum, product) =>
@@ -105,7 +107,10 @@ const BookingOnlineComplete = () => {
                             </div>
                         </>
                     )}
-                    <div className="mt-auto">
+                    <div className="mt-auto hidden md:block">
+                        <Button onClick={handleGoBackHome}>VỀ TRANG CHỦ</Button>
+                    </div>
+                    <div className="fixed md:hidden z-50 bottom-0 left-0 right-0 p-3 bg-white dark:bg-dark shadow-[0_-3px_6px_#fff] dark:shadow-[0_-3px_6px_#171717]">
                         <Button onClick={handleGoBackHome}>VỀ TRANG CHỦ</Button>
                     </div>
                 </div>

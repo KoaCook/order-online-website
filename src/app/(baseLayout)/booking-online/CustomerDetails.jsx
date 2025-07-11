@@ -49,12 +49,12 @@ const CustomerDetails = forwardRef((props, ref) => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
-            <div className="mt-6">
-                <div className="text-base uppercase mb-5">
+            <div className="md:mt-6">
+                <div className="text-sm sm:text-base uppercase mb-5">
                     Thông tin khách hàng <span className="text-red-500">*</span>
                 </div>
-                <div className="flex mb-4">
-                    <div className="flex-1">
+                <div className="sm:flex mb-4">
+                    <div className="flex-1 mb-[22px] sm:mb-0">
                         <div className="px-3 border border-solid border-[#dbdbdb] dark:border-[#292929] dark:bg-[#1e1e1e] flex items-center h-10 rounded-lg mr-3 overflow-hidden">
                             <span className="text-primary mr-2.5 w-6 h-6 flex items-center">
                                 <UserIcon />
@@ -108,11 +108,11 @@ const CustomerDetails = forwardRef((props, ref) => {
                 </div>
             </div>
             <div className="mt-6">
-                <div className="text-base uppercase mb-5">Thông tin đặt chỗ</div>
-                <div className="flex mb-4">
-                    <div className="flex-1">
-                        <div className="font-semibold text-base mb-2">Số khách</div>
-                        <div className="px-3 border border-solid border-[#dbdbdb] dark:border-[#292929] dark:bg-[#1e1e1e] flex items-center h-10 rounded-lg mr-3 overflow-hidden">
+                <div className="text-sm sm:text-base uppercase mb-5">Thông tin đặt chỗ</div>
+                <div className="sm:flex mb-4">
+                    <div className="flex-1 mb-[22px] sm:mb-0">
+                        <div className="font-semibold text-sm sm:text-base mb-2">Số khách</div>
+                        <div className="px-3 border border-solid border-[#dbdbdb] dark:border-[#292929] dark:bg-[#1e1e1e] flex items-center h-10 rounded-lg sm:mr-3 overflow-hidden">
                             <span className="text-primary mr-2.5 w-6 h-6 flex items-center">
                                 <GroupIcon />
                             </span>
@@ -142,8 +142,8 @@ const CustomerDetails = forwardRef((props, ref) => {
                             </span>
                         )}
                     </div>
-                    <div className="flex-1 mr-3">
-                        <div className="font-semibold text-base mb-2">
+                    <div className="flex-1 mb-[22px] sm:mb-0 sm:mr-3">
+                        <div className="font-semibold text-sm sm:text-base mb-2">
                             Ngày đến <span className="text-red-500">*</span>
                         </div>
                         <div className="px-3 border border-solid border-[#dbdbdb] dark:border-[#292929] dark:bg-[#1e1e1e] flex items-center h-10 rounded-lg overflow-hidden">
@@ -179,7 +179,7 @@ const CustomerDetails = forwardRef((props, ref) => {
                         )}
                     </div>
                     <div className="flex-1">
-                        <div className="font-semibold text-base mb-2">
+                        <div className="font-semibold text-sm sm:text-base mb-2">
                             Giờ đến <span className="text-red-500">*</span>
                         </div>
                         <Controller

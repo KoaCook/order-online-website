@@ -64,7 +64,7 @@ const ProductDetailsModal = () => {
             ></div>
             <div
                 className={clsx(
-                    'flex flex-col relative z-10 w-full max-w-[800px] max-h-[90%] m-6 shadow-product-details-modal bg-paper dark:bg-lightDark rounded-md transition-all ease-ease duration-300 overflow-hidden',
+                    'flex flex-col relative z-10 w-full h-full sm:max-w-[800px] sm:max-h-[90%] sm:m-4 md:m-6 shadow-product-details-modal bg-paper dark:bg-lightDark sm:rounded-md transition-all ease-ease duration-300 overflow-hidden',
                     isVisible && 'opacity-100 scale-100',
                     !isVisible && 'opacity-0 scale-75',
                 )}
@@ -72,7 +72,7 @@ const ProductDetailsModal = () => {
             >
                 <button
                     onClick={handleClose}
-                    className="absolute top-4 right-3 w-6 h-6 flex items-center justify-center rounded-full bg-[#bcbdbe] dark:bg-transparent"
+                    className="absolute top-4 right-3 w-6 h-6 flex items-center justify-center rounded-full bg-[#9e9fa0] z-20"
                 >
                     <X size={16} className="text-paper" />
                 </button>

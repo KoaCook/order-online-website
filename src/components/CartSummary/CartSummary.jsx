@@ -11,7 +11,7 @@ const CartSummary = ({ isShort }) => {
     const taxFee = totalPrice * 0.08;
 
     return (
-        <div className="text-base dark:text-white">
+        <div className="text-sm sm:text-base dark:text-white">
             {!isShort ? (
                 <>
                     <div className="mb-3 flex items-center justify-between">
@@ -37,12 +37,14 @@ const CartSummary = ({ isShort }) => {
                     <div className="my-4 border-t border-solid border-[rgba(0,0,0,0.12)] dark:border-darkDivider"></div>
                     <div className="flex items-center justify-between">
                         <div className="flex items-center">
-                            <div className="text-base font-semibold uppercase mr-1">Tổng</div>
-                            <div className="bg-primary text-white rounded-md min-w-[60px] h-6 px-2 text-center text-base leading-[24px]">
+                            <div className="text-sm sm:text-base font-semibold uppercase mr-1">
+                                Tổng
+                            </div>
+                            <div className="bg-primary text-white rounded-md min-w-[60px] h-6 px-2 text-center text-sm sm:text-base leading-[24px]">
                                 {products.reduce((sum, p) => sum + (p.quantity || 1), 0)} món
                             </div>
                         </div>
-                        <div className="font-semibold text-2xl">
+                        <div className="font-semibold text-base sm:text-2xl">
                             {formatPrice(totalPrice + taxFee)} đ
                         </div>
                     </div>
@@ -50,7 +52,9 @@ const CartSummary = ({ isShort }) => {
             ) : (
                 <div className="flex items-center justify-between">
                     <div className="flex items-center">
-                        <div className="text-base font-semibold uppercase mr-1">Tổng</div>
+                        <div className="text-sm sm:text-base font-semibold uppercase mr-1">
+                            Tổng
+                        </div>
                         <div className="bg-primary text-white rounded-md min-w-[60px] h-6 px-2 text-center text-base leading-[24px]">
                             {products.reduce((sum, p) => sum + (p.quantity || 1), 0)} món
                         </div>

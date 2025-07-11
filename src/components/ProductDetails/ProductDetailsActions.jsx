@@ -24,7 +24,7 @@ const ProductDetailsActions = ({ data, error, isLoading, isValidating, onClose }
         <>
             <div
                 className={clsx(
-                    'p-5 bg-paper dark:bg-[#1b1b1b] flex-1 overflow-y-scroll dark:text-white',
+                    'sm:p-5 bg-paper dark:bg-[#1b1b1b] flex-1 overflow-y-scroll dark:text-white',
                     (isLoading || isValidating) && 'pointer-events-none select-none opacity-60',
                 )}
             >
@@ -33,8 +33,8 @@ const ProductDetailsActions = ({ data, error, isLoading, isValidating, onClose }
                 )}
                 {!error && data && (
                     <>
-                        <div className="flex mb-7.5">
-                            <div className="w-[250px] aspect-[4/3] relative mr-2 rounded-md overflow-hidden">
+                        <div className="sm:flex mb-7.5">
+                            <div className="w-full h-[200px] sm:h-auto sm:w-[250px] sm:aspect-[4/3] relative mr-2 sm:rounded-md overflow-hidden">
                                 <div
                                     style={{
                                         backgroundImage: `url(/fallback_product_img.png)`,
@@ -48,17 +48,24 @@ const ProductDetailsActions = ({ data, error, isLoading, isValidating, onClose }
                                     className="w-full h-full bg-center bg-cover bg-no-repeat absolute top-0 right-0 left-0 bottom-0 z-10"
                                 />
                             </div>
-                            <div className="flex-1 px-4 text-2xl">
-                                <div className="mb-2.5">{data?.name}</div>
-                                <div className="font-semibold">{formatPrice(data?.price)} đ</div>
-                                <div className="mt-4 text-base">
+                            <div className="flex-1 px-4 text-base sm:text-xl md:text-2xl mt-4 sm:mt-0">
+                                <div className="flex items-center justify-between sm:items-start sm:justify-start sm:flex-col">
+                                    <div className="sm:mb-2.5">{data?.name}</div>
+                                    <div className="font-semibold">
+                                        {formatPrice(data?.price)} đ
+                                    </div>
+                                </div>
+                                <div className="my-4 sm:hidden border-t border-solid border-[#dbdbdb] dark:border-darkDivider"></div>
+                                <div className="sm:mt-4 text-sm sm:text-base">
                                     {data?.description || 'Không có mô tả cho sản phẩm này.'}
                                 </div>
                             </div>
                         </div>
                         {/* The rest of your options, checkboxes, textarea, etc. can remain unchanged */}
-                        <div>
-                            <div className="text-base uppercase font-bold my-4">Độ ngọt</div>
+                        <div className="px-4">
+                            <div className="text-sm sm:text-base uppercase font-bold my-4">
+                                Độ ngọt
+                            </div>
                             <div className="flex items-center mt-1 pt-1">
                                 <div className="inline-flex items-center mr-2">
                                     <label className="flex items-center cursor-pointer relative">
@@ -74,41 +81,16 @@ const ProductDetailsActions = ({ data, error, isLoading, isValidating, onClose }
                                 </div>
                                 <label
                                     htmlFor="checkbox1"
-                                    className="flex items-center text-base select-none cursor-pointer"
+                                    className="flex items-center text-sm sm:text-base select-none cursor-pointer"
                                 >
                                     <span>30% Đường</span>
                                 </label>
                             </div>
                         </div>
-                        <div className="mt-7.5">
-                            <div className="text-base uppercase font-bold my-4">Khác</div>
-                            <div className="flex items-center mt-1 pt-1">
-                                <div className="inline-flex items-center mr-2">
-                                    <label className="flex items-center cursor-pointer relative">
-                                        <input
-                                            type="checkbox"
-                                            className="peer h-5 w-5 cursor-pointer transition-all appearance-none rounded-md shadow hover:shadow-md border border-slate-400 checked:bg-primary checked:border-primary"
-                                            id="checkbox2"
-                                        />
-                                        <span className="absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-                                            <CheckIcon />
-                                        </span>
-                                    </label>
-                                </div>
-                                <label
-                                    htmlFor="checkbox2"
-                                    className="flex items-center text-base select-none cursor-pointer"
-                                >
-                                    <span>
-                                        Nhiều sữa <span className="text-primary">(5.000đ)</span>
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-                        <div className="mt-10 mb-2">
+                        <div className="mt-10 mb-2 px-4">
                             <textarea
                                 placeholder="Ghi chú"
-                                className="px-3 pt-2 text-[15px] bg-white border border-solid border-[#dbdbdb] dark:bg-transparent dark:border-[#292929] rounded-lg resize-none w-full outline-none caret-primary"
+                                className="px-3 pt-2 text-sm sm:text-[15px] bg-white border border-solid border-[#dbdbdb] dark:bg-transparent dark:border-[#292929] rounded-lg resize-none w-full outline-none caret-primary"
                                 rows={3}
                             ></textarea>
                         </div>
@@ -117,7 +99,7 @@ const ProductDetailsActions = ({ data, error, isLoading, isValidating, onClose }
             </div>
             <div className="p-5 bg-white dark:bg-dark dark:text-white flex items-center justify-between">
                 <div className="flex items-center">
-                    <span className="text-base mr-3">Số lượng</span>
+                    <span className="hidden sm:inline-block text-base mr-3">Số lượng</span>
                     <div className="flex items-center">
                         <button
                             className="flex items-center justify-center h-[34px] w-[34px] rounded-full text-primary border border-solid dark:bg-primary dark:text-white border-primary ripple-quantity-btn"

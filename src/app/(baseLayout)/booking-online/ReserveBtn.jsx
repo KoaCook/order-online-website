@@ -6,6 +6,7 @@ import useCart from '@/stores/useCart';
 import useCustomerDetails from '@/stores/useCustomerDetails';
 import useLayoutStore from '@/stores/useLayoutStore';
 import useNotifications from '@/stores/useNotifications';
+import formatPrice from '@/utils/formatPrice';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -61,9 +62,19 @@ const ReserveBtn = ({ onSubmit }) => {
     };
 
     return (
-        <Button className="mt-6" isLoading={isLoading} onClick={handleSubmitReservation}>
-            Đặt chỗ
-        </Button>
+        <>
+            <div className="hidden md:block">
+                <Button className="mt-6" isLoading={isLoading} onClick={handleSubmitReservation}>
+                    Đặt chỗ
+                </Button>
+            </div>
+
+            <div className="fixed md:hidden z-50 bottom-0 left-0 right-0 p-3 bg-white dark:bg-dark shadow-[0_-3px_6px_#fff] dark:shadow-[0_-3px_6px_#171717]">
+                <Button isLoading={isLoading} onClick={handleSubmitReservation}>
+                    Đặt chỗ
+                </Button>
+            </div>
+        </>
     );
 };
 

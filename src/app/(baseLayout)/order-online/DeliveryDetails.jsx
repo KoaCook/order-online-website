@@ -55,10 +55,12 @@ const DeliveryDetails = () => {
 
     return (
         <>
-            <div className="text-base uppercase mb-5">Thông tin đặt hàng</div>
+            <div className="text-sm sm:text-base uppercase mb-5">Thông tin đặt hàng</div>
             <div className="mb-4">
                 <div className="flex-1 mb-[22px]">
-                    <div className="font-semibold text-base mb-2">Hình thức giao nhận</div>
+                    <div className="font-semibold text-sm sm:text-base mb-2">
+                        Hình thức giao nhận
+                    </div>
                     <StyledSelect
                         options={[
                             { label: 'Giao tận nơi', value: 'delivery' },
@@ -149,7 +151,7 @@ const DeliveryDetails = () => {
                         </button>
                     );
                 })}
-                <div className="flex-1"></div>
+                <div className="flex-1 hidden xl:block"></div>
             </div>
         </>
     );

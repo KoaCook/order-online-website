@@ -10,7 +10,7 @@ const ProductCartItem = ({ data }) => {
 
     return (
         <div className="relative dark:text-white">
-            <div className="text-lg font-semibold w-[250px] mb-5">{data.name}</div>
+            <div className="text-base sm:text-lg font-semibold w-[250px] mb-5">{data.name}</div>
             <button
                 className="h-8 w-8 text-[rgba(0,0,0,.54)] dark:text-white flex items-center justify-center ripple rounded-full absolute right-0 -top-1.5"
                 onClick={() => removeProduct(data.id)}
@@ -36,9 +36,11 @@ const ProductCartItem = ({ data }) => {
                         <Plus size={18} />
                     </button>
                 </div>
-                <div className="text-base mr-1">{formatPrice(data.price * data.quantity)} đ</div>
+                <div className="text-sm sm:text-base mr-1">
+                    {formatPrice(data.price * data.quantity)} đ
+                </div>
             </div>
-            <hr className="my-4 border-t border-solid border-[rgba(0,0,0,.12)] dark:border-darkDivider w-full" />
+            <hr className="my-3 sm:my-4 border-t border-solid border-[rgba(0,0,0,.12)] dark:border-darkDivider w-full" />
         </div>
     );
 };

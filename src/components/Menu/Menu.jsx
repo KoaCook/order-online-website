@@ -44,7 +44,7 @@ const Menu = ({ closeOnClick, animation, anchor, children }) => {
     }, [isOpen]);
 
     return (
-        <div className="relative inline-block" ref={menuRef}>
+        <div className="relative block" ref={menuRef}>
             {/* Anchor element */}
             <div onClick={toggleMenu}>{anchor}</div>
 
@@ -54,7 +54,7 @@ const Menu = ({ closeOnClick, animation, anchor, children }) => {
                 className={clsx(
                     'transition-opacity duration-200 ease-ease',
                     animation === 'fade' && isOpen && 'opacity-1',
-                    animation === 'fade' && !isOpen && 'opacity-0'
+                    animation === 'fade' && !isOpen && 'opacity-0',
                 )}
             >
                 {visible && children}

@@ -8,7 +8,7 @@ import { useRef, useState } from 'react';
 import { ChevronDown } from 'react-feather';
 import ConfirmMethodModal from './ConfirmMethodModal';
 
-const MethodSwitcher = () => {
+const MethodSwitcher = ({ noResponsive = false, className }) => {
     const [isOpenConfirmModal, setOpenConfirmModal] = useState(false);
     const chosenMethod = useLayoutStore(state => state.chosenMethod);
     const setChosenMethod = useLayoutStore(state => state.setChosenMethod);
@@ -41,7 +41,13 @@ const MethodSwitcher = () => {
                 animation="fade"
                 closeOnClick
                 anchor={
-                    <div className="h-11 border border-solid border-[#dbdbdb] dark:border-lightDark dark:bg-lightDark px-4 w-[200px] flex items-center justify-between rounded-md cursor-pointer dark:text-white">
+                    <div
+                        className={clsx(
+                            'h-11 border border-solid border-[#dbdbdb] dark:border-[#292929] dark:bg-lightDark px-4 w-[200px] items-center justify-between rounded-md cursor-pointer dark:text-white',
+                            noResponsive ? 'flex' : 'hidden md:flex',
+                            className,
+                        )}
+                    >
                         <div className="flex-1 flex items-center">
                             {currentMethod.icon}
                             <span className="ml-3.5">{currentMethod.label}</span>

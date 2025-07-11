@@ -1,9 +1,13 @@
 'use client';
 
+import routes from '@/config/routes';
+import clsx from 'clsx';
+import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { Moon, Sun } from 'react-feather';
 
 const DarkModeBtn = () => {
+    const pathname = usePathname();
     const [darkMode, setDarkMode] = useState(() => {
         // Check localStorage or system preference
         if (typeof window !== 'undefined') {
@@ -31,7 +35,10 @@ const DarkModeBtn = () => {
             type="button"
             aria-label="Toggle dark mode"
             onClick={toggleDarkMode}
-            className="min-h-10 min-w-10 flex items-center justify-center rounded-lg ml-2.5 ripple"
+            className={clsx(
+                'min-h-10 min-w-10 items-center justify-center rounded-lg ml-2.5 ripple',
+                pathname !== routes.HOME ? 'hidden md:flex' : 'flex',
+            )}
         >
             {darkMode ? (
                 <Sun className="text-white" />

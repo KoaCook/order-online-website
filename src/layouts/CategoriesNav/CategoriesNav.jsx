@@ -3,10 +3,12 @@ import Search from './Search';
 
 const CategoriesNav = () => {
     return (
-        <div className="flex justify-between items-center">
+        <div className="md:flex justify-between items-center">
             <CategoriesList />
 
-            <Search />
+            <div className="mt-4 md:mt-0">
+                <Search />
+            </div>
         </div>
     );
 };

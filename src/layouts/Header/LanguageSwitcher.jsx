@@ -5,22 +5,19 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import { ChevronDown } from 'react-feather';
 
-const LanguageSwitcher = () => {
+const LanguageSwitcher = ({ noResponsive = false, showLabel = false }) => {
     return (
-        <div className="ml-5">
+        <div className={clsx('ml-5', noResponsive ? 'block' : 'md:block hidden')}>
             <Menu
                 closeOnClick
                 animation="fade"
                 anchor={
                     <button className="flex items-center justify-end min-h-12 min-w-14 relative">
-                        <Image
-                            src="/vietnam.svg"
-                            alt="Vietnam Icon"
-                            width={34}
-                            height={24}
-                            className="mr-2.5"
-                        />
-                        <ChevronDown size={14} className="dark:text-white" />
+                        <Image src="/vietnam.svg" alt="Vietnam Icon" width={34} height={24} />
+                        {showLabel && (
+                            <div className="ml-2 text-base dark:text-white">Tiếng Việt</div>
+                        )}
+                        <ChevronDown size={14} className="dark:text-white ml-2.5" />
                     </button>
                 }
             >

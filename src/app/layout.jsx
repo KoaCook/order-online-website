@@ -1,4 +1,3 @@
-import ChooseMethod from '@/layouts/ChooseMethod';
 import dynamic from 'next/dynamic';
 import { Open_Sans } from 'next/font/google';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -9,6 +8,7 @@ import 'slick-carousel/slick/slick.css';
 import './globals.css';
 import './layout.css';
 
+const ChooseMethod = dynamic(() => import('@/layouts/ChooseMethod'));
 const Notifications = dynamic(() => import('@/layouts/Notifications'));
 
 export const metadata = {

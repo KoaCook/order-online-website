@@ -23,7 +23,7 @@ const Cart = () => {
                 onClick={openCartDrawer}
                 type="button"
                 data-ripple-dark="true"
-                className="min-h-10 min-w-14 flex items-center justify-center rounded-lg ml-2.5 ripple px-3"
+                className="min-h-9 lg:min-h-10 min-w-9 lg:min-w-14 hidden md:flex items-center justify-center rounded-lg ml-2.5 ripple px-3"
             >
                 <div className="relative">
                     <ShoppingCart className="dark:text-white" />
@@ -48,7 +48,7 @@ const Cart = () => {
                 open={isOpenCartDrawer}
                 onClose={closeCartDrawer}
                 direction="right"
-                className="!w-drawer"
+                className="!w-screen sm:!w-drawer"
             >
                 <div className="relative flex flex-col h-full dark:bg-lightDark">
                     <button

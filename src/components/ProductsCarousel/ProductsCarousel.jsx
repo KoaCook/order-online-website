@@ -22,7 +22,9 @@ const ProductsCarousel = ({ data }) => {
     return (
         <>
             <div className="flex items-center justify-between">
-                <h2 className="font-semibold text-2xl dark:text-white">{data.label}</h2>
+                <h2 className="font-semibold text-base sm:text-2xl dark:text-white">
+                    {data.label}
+                </h2>
                 <div className="flex">
                     <button
                         className="h-10 w-10 ripple rounded-full flex items-center justify-center"
@@ -53,6 +55,10 @@ const ProductsCarousel = ({ data }) => {
                         slidesToShow={5}
                         autoplay={false}
                         draggable={false}
+                        responsive={[
+                            { breakpoint: 1024, settings: { slidesToShow: 4 } },
+                            { breakpoint: 960, settings: { slidesToShow: 3 } },
+                        ]}
                     >
                         {data.items.map(item => (
                             <div key={item.id} className="px-[15px]">

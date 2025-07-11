@@ -3,6 +3,7 @@
 import useLayoutStore from '@/stores/useLayoutStore';
 import formatPrice from '@/utils/formatPrice';
 import React from 'react';
+import Button from '../Button';
 
 const ProductItem = ({ data }) => {
     const openProductModal = useLayoutStore(state => state.openProductModal);
@@ -12,8 +13,8 @@ const ProductItem = ({ data }) => {
     };
 
     return (
-        <div className="h-full rounded-md shadow-product-item bg-white dark:bg-[#1b1b1b] dark:text-white overflow-hidden flex flex-col">
-            <div className="w-full aspect-[4/3] overflow-hidden relative">
+        <div className="h-full sm:rounded-md sm:shadow-product-item bg-white dark:bg-[#1b1b1b] dark:text-white overflow-hidden flex sm:flex-col py-4 sm:py-0 border-b sm:border-b-0 border-solid border-[rgba(0,0,0,.12)] dark:border-darkDivider">
+            <div className="rounded-lg sm:rounded-none w-[86px] h-[86px] sm:h-auto aspect-square sm:w-full sm:aspect-[4/3] overflow-hidden relative mr-3 sm:mr-0">
                 <div
                     style={{ backgroundImage: 'url(/fallback_product_img.png)' }}
                     className="w-full h-full bg-center bg-cover transition-transform hover:scale-110 ease-in-out duration-500 cursor-pointer"
@@ -24,22 +25,19 @@ const ProductItem = ({ data }) => {
                     className="w-full h-full bg-center bg-cover bg-no-repeat transition-transform hover:scale-110 ease-in-out duration-500 cursor-pointer absolute top-0 left-0 right-0 bottom-0 z-10"
                 ></div>
             </div>
-            <div className="px-5 py-3 text-center flex flex-col flex-1">
-                <div className="text-base mb-2.5 flex-1 leading-[1.24]">{data.name}</div>
-                <div className="font-semibold text-xl mb-4">{formatPrice(data.price)} đ</div>
-                <div className="w-max flex flex-col self-center">
-                    <button
-                        className="text-white font-semibold bg-primary rounded-md text-sm h-10 min-w-16 px-4 mb-1.5"
-                        onClick={handleOpenModal}
-                    >
-                        THÊM VÀO GIỎ
-                    </button>
-                    <button
-                        className="text-primary font-semibold rounded-md text-sm h-10 min-w-16 px-4 mb-1.5"
-                        onClick={handleOpenModal}
-                    >
+            <div className="sm:px-5 sm:py-3 text-center flex flex-col items-start sm:items-center flex-1">
+                <div className="text-sm sm:text-base sm:mb-2.5 flex-1 leading-[1.24]">
+                    {data.name}
+                </div>
+                <div className="font-semibold text-base sm:text-xl sm:mb-4 mb-2">
+                    {formatPrice(data.price)} đ
+                </div>
+                <div className="w-max flex sm:flex-col gap-2 sm:gap-0 sm:self-center">
+                    <Button onClick={handleOpenModal}>THÊM VÀO GIỎ</Button>
+
+                    <Button onClick={handleOpenModal} variant="surface">
                         MUA NGAY
-                    </button>
+                    </Button>
                 </div>
             </div>
         </div>

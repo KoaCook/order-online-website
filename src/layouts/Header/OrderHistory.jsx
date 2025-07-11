@@ -6,15 +6,19 @@ import METHODS from '@/constants/methods';
 import statuses from '@/constants/statuses';
 import formatDateTime from '@/utils/formatDateTime';
 import formatPrice from '@/utils/formatPrice';
+import clsx from 'clsx';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { FileText, X } from 'react-feather';
 import Drawer from 'react-modern-drawer';
 import PhoneInput from './PhoneInput';
+import routes from '@/config/routes';
 
 const OrderHistory = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [orders, setOrders] = useState();
     const [error, setError] = useState(false);
+    const pathname = usePathname();
 
     const toggleDrawer = () => {
         setIsOpen(prevState => !prevState);
@@ -46,13 +50,21 @@ const OrderHistory = () => {
                 onClick={toggleDrawer}
                 type="button"
                 data-ripple-dark="true"
-                className="min-h-10 min-w-10 flex items-center justify-center rounded-lg ml-2.5 ripple px-3 dark:text-white"
+                className={clsx(
+                    'min-h-9 lg:min-h-10 min-w-9 lg:min-w-10 items-center justify-center rounded-lg ml-2.5 ripple px-3 dark:text-white',
+                    pathname !== routes.HOME ? 'hidden md:flex' : 'flex',
+                )}
             >
                 <FileText />
-                <span className="ml-1.5">Tra cứu đơn hàng</span>
+                <span className="ml-1.5 hidden lg:inline-block">Tra cứu đơn hàng</span>
             </button>
 
-            <Drawer open={isOpen} onClose={toggleDrawer} direction="right" className="!w-drawer">
+            <Drawer
+                open={isOpen}
+                onClose={toggleDrawer}
+                direction="right"
+                className="!w-screen sm:!w-drawer"
+            >
                 <div className="relative flex flex-col h-full overflow-y-scroll dark:bg-lightDark">
                     <button
                         onClick={toggleDrawer}

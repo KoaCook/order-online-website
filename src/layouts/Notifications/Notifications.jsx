@@ -8,7 +8,7 @@ const Notifications = () => {
     const notifications = useNotifications(state => state.notifications);
 
     return (
-        <div className="fixed top-[calc(72px+16px)] right-4">
+        <div className="fixed top-[calc(72px+16px)] right-4 z-50">
             <AnimatePresence>
                 {notifications.map(item => (
                     <NotificationItem key={item.id} {...item} />

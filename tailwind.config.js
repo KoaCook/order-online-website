@@ -45,6 +45,12 @@ module.exports = {
                 drawer: '428px',
             },
         },
+        screens: {
+            sm: '600px',
+            md: '960px',
+            lg: '1024px',
+            xl: '1264px',
+        },
     },
     darkMode: 'class',
 };

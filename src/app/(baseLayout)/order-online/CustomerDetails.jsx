@@ -107,59 +107,57 @@ const CustomerDetails = ({ onSubmit: onSubmitProp }, ref) => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} noValidate className="overflow-hidden">
-            <div className="text-base uppercase mb-5">
+            <div className="text-sm sm:text-base uppercase mb-5">
                 Thông tin người nhận <span className="text-red-500">*</span>
             </div>
-            <div className="flex">
-                <div className="px-3 border border-solid border-[#dbdbdb] dark:border-[#292929] dark:bg-[#1e1e1e] flex items-center h-10 rounded-lg mr-3 flex-1 overflow-hidden">
-                    <span className="text-primary mr-2.5 w-6 h-6 flex items-center">
-                        <UserIcon />
-                    </span>
-                    <input
-                        type="text"
-                        className="py-2 w-full flex-1 caret-primary text-[15px] outline-none bg-transparent"
-                        placeholder="Họ và tên"
-                        {...register('name', {
-                            required: 'Vui lòng nhập họ và tên',
-                            minLength: { value: 2, message: 'Tên quá ngắn' },
-                        })}
-                        onChange={e => {
-                            setField('name', e.target.value);
-                            setValue('name', e.target.value, { shouldValidate: true });
-                        }}
-                        value={name}
-                    />
-                </div>
-                <div className="px-3 border border-solid border-[#dbdbdb] dark:border-[#292929] dark:bg-[#1e1e1e] flex items-center h-10 rounded-lg flex-1 overflow-hidden">
-                    <span className="text-primary mr-2.5 w-6 h-6 flex items-center">
-                        <PhoneIcon />
-                    </span>
-                    <input
-                        type="text"
-                        className="py-2 w-full flex-1 caret-primary text-[15px] outline-none bg-transparent"
-                        placeholder="Số điện thoại"
-                        {...register('phone', {
-                            required: 'Vui lòng nhập số điện thoại',
-                            pattern: {
-                                value: /^[0-9]{9,12}$/,
-                                message: 'Số điện thoại không hợp lệ',
-                            },
-                        })}
-                        onChange={e => {
-                            setField('phone', e.target.value);
-                            setValue('phone', e.target.value, { shouldValidate: true });
-                        }}
-                        value={phone}
-                    />
-                </div>
-            </div>
-            <div className="flex">
-                <div className="flex-1 mr-3">
+            <div className="sm:flex">
+                <div className="mb-[22px] sm:mb-0 flex-1 sm:mr-3">
+                    <div className="px-3 border border-solid border-[#dbdbdb] dark:border-[#292929] dark:bg-[#1e1e1e] flex items-center h-10 rounded-lg w-full overflow-hidden">
+                        <span className="text-primary mr-2.5 w-6 h-6 flex items-center">
+                            <UserIcon />
+                        </span>
+                        <input
+                            type="text"
+                            className="py-2 w-full flex-1 caret-primary text-[15px] outline-none bg-transparent"
+                            placeholder="Họ và tên"
+                            {...register('name', {
+                                required: 'Vui lòng nhập họ và tên',
+                                minLength: { value: 2, message: 'Tên quá ngắn' },
+                            })}
+                            onChange={e => {
+                                setField('name', e.target.value);
+                                setValue('name', e.target.value, { shouldValidate: true });
+                            }}
+                            value={name}
+                        />
+                    </div>
                     {errors.name && (
                         <span className="text-red-500 text-xs">{errors.name.message}</span>
                     )}
                 </div>
                 <div className="flex-1">
+                    <div className="px-3 border border-solid border-[#dbdbdb] dark:border-[#292929] dark:bg-[#1e1e1e] flex items-center h-10 rounded-lg w-full overflow-hidden">
+                        <span className="text-primary mr-2.5 w-6 h-6 flex items-center">
+                            <PhoneIcon />
+                        </span>
+                        <input
+                            type="text"
+                            className="py-2 w-full flex-1 caret-primary text-[15px] outline-none bg-transparent"
+                            placeholder="Số điện thoại"
+                            {...register('phone', {
+                                required: 'Vui lòng nhập số điện thoại',
+                                pattern: {
+                                    value: /^[0-9]{9,12}$/,
+                                    message: 'Số điện thoại không hợp lệ',
+                                },
+                            })}
+                            onChange={e => {
+                                setField('phone', e.target.value);
+                                setValue('phone', e.target.value, { shouldValidate: true });
+                            }}
+                            value={phone}
+                        />
+                    </div>
                     {errors.phone && (
                         <span className="text-red-500 text-xs">{errors.phone.message}</span>
                     )}
@@ -208,92 +206,87 @@ const CustomerDetails = ({ onSubmit: onSubmitProp }, ref) => {
                                 </span>
                             )}
                         </div>
-                        <div className="flex gap-3">
-                            <Controller
-                                control={control}
-                                name="city"
-                                rules={{
-                                    validate: value =>
-                                        chosenMethod !== 'delivery' || value
-                                            ? true
-                                            : 'Vui lòng chọn tỉnh/thành phố',
-                                }}
-                                render={({ field }) => (
-                                    <StyledSelect
-                                        options={cities}
-                                        placeholder="Tỉnh/Thành phố"
-                                        value={city}
-                                        onChange={value => {
-                                            handleCityChange(value);
-                                            field.onChange(value);
-                                        }}
-                                        className="flex-1"
-                                    />
-                                )}
-                            />
-                            <Controller
-                                control={control}
-                                name="district"
-                                rules={{
-                                    validate: value =>
-                                        chosenMethod !== 'delivery' || value
-                                            ? true
-                                            : 'Vui lòng chọn quận/huyện',
-                                }}
-                                render={({ field }) => (
-                                    <StyledSelect
-                                        options={districts}
-                                        value={district}
-                                        onChange={value => {
-                                            handleDistrictChange(value);
-                                            field.onChange(value);
-                                        }}
-                                        placeholder="Quận/Huyện"
-                                        className="flex-1"
-                                        disabled={!city}
-                                    />
-                                )}
-                            />
-                            <Controller
-                                control={control}
-                                name="ward"
-                                rules={{
-                                    validate: value =>
-                                        chosenMethod !== 'delivery' || value
-                                            ? true
-                                            : 'Vui lòng chọn phường/xã',
-                                }}
-                                render={({ field }) => (
-                                    <StyledSelect
-                                        options={wardOptions}
-                                        value={ward}
-                                        onChange={value => {
-                                            handleWardChange(value);
-                                            field.onChange(value);
-                                        }}
-                                        placeholder="Phường/Xã"
-                                        disabled={!district}
-                                        className="flex-1"
-                                    />
-                                )}
-                            />
-                        </div>
-                        <div className="flex gap-3">
-                            <div className="flex-1">
+                        <div className="xl:flex gap-3">
+                            <div className="flex-1 mt-[22px] xl:mt-0">
+                                <Controller
+                                    control={control}
+                                    name="city"
+                                    rules={{
+                                        validate: value =>
+                                            chosenMethod !== 'delivery' || value
+                                                ? true
+                                                : 'Vui lòng chọn tỉnh/thành phố',
+                                    }}
+                                    render={({ field }) => (
+                                        <StyledSelect
+                                            options={cities}
+                                            placeholder="Tỉnh/Thành phố"
+                                            value={city}
+                                            onChange={value => {
+                                                handleCityChange(value);
+                                                field.onChange(value);
+                                            }}
+                                        />
+                                    )}
+                                />
                                 {errors.city && (
                                     <span className="text-red-500 text-xs">
                                         {errors.city.message}
                                     </span>
                                 )}
                             </div>
-                            <div className="flex-1">
+                            <div className="flex-1 mt-[22px] xl:mt-0">
+                                <Controller
+                                    control={control}
+                                    name="district"
+                                    rules={{
+                                        validate: value =>
+                                            chosenMethod !== 'delivery' || value
+                                                ? true
+                                                : 'Vui lòng chọn quận/huyện',
+                                    }}
+                                    render={({ field }) => (
+                                        <StyledSelect
+                                            options={districts}
+                                            value={district}
+                                            onChange={value => {
+                                                handleDistrictChange(value);
+                                                field.onChange(value);
+                                            }}
+                                            placeholder="Quận/Huyện"
+                                            disabled={!city}
+                                        />
+                                    )}
+                                />
                                 {errors.district && (
                                     <span className="text-red-500 text-xs">
                                         {errors.district.message}
                                     </span>
                                 )}
                             </div>
-                            <div className="flex-1">
+                            <div className="flex-1 mt-[22px] xl:mt-0">
+                                <Controller
+                                    control={control}
+                                    name="ward"
+                                    rules={{
+                                        validate: value =>
+                                            chosenMethod !== 'delivery' || value
+                                                ? true
+                                                : 'Vui lòng chọn phường/xã',
+                                    }}
+                                    render={({ field }) => (
+                                        <StyledSelect
+                                            options={wardOptions}
+                                            value={ward}
+                                            onChange={value => {
+                                                handleWardChange(value);
+                                                field.onChange(value);
+                                            }}
+                                            placeholder="Phường/Xã"
+                                            disabled={!district}
+                                        />
+                                    )}
+                                />
                                 {errors.ward && (
                                     <span className="text-red-500 text-xs">
                                         {errors.ward.message}

@@ -78,7 +78,7 @@ const ChooseMethodModal = () => {
             <div className={modalClass} ref={modalRef}>
                 <div className="flex items-center justify-between pl-[-10px] pr-2.5 pt-1">
                     <div className="flex items-center">
-                        <LanguageSwitcher />
+                        <LanguageSwitcher noResponsive />
                         <DarkModeBtn />
                     </div>
                 </div>

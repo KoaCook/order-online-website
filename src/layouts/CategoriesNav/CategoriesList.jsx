@@ -100,7 +100,7 @@ const CategoriesList = () => {
                             ref={el => (categoryRefs.current[i] = el)}
                             onClick={() => handleCategoryClick(category, i)}
                             className={clsx(
-                                'px-4 mr-2 rounded-md h-10 text-sm font-normal whitespace-nowrap outline-none',
+                                'px-3 sm:px-4 mr-2 rounded-md h-9 sm:h-10 text-xs sm:text-sm font-normal whitespace-nowrap outline-none',
                                 category.slug !== selectedCategorySlug &&
                                     'bg-[#f5f5f5] dark:bg-[#272727] dark:text-white text-black ripple-unactive-category-btn',
                                 category.slug === selectedCategorySlug &&

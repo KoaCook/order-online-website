@@ -13,6 +13,7 @@ const ProductsList = () => {
     const searchParams = useSearchParams();
     const categorySlug = searchParams.get('category');
     const searchQuery = searchParams.get('search');
+    const appWidth = window.innerWidth;
 
     // Decide which hook to use based on query params
     let dataHook;
@@ -50,22 +51,24 @@ const ProductsList = () => {
         <>
             {categorySlug ? (
                 <div className="mb-7.5">
-                    <h2 className="font-semibold text-2xl dark:text-white">{data.label}</h2>
-                    <div className="mt-7 grid grid-cols-4 lg:grid-cols-5 gap-7.5">
+                    <h2 className="font-semibold text-base sm:text-2xl dark:text-white">
+                        {data.label}
+                    </h2>
+                    <div className="mt-3 sm:mt-7 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 sm:gap-5 md:gap-7.5">
                         {data.items.map(item => (
                             <ProductItem key={item.id} data={item} />
                         ))}
                     </div>
                 </div>
             ) : searchQuery ? (
-                <div className="mt-7 grid grid-cols-4 lg:grid-cols-5 gap-7.5">
+                <div className="mt-3 sm:mt-7 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 sm:gap-5 md:gap-7.5">
                     {data.map(item => (
                         <ProductItem key={item.id} data={item} />
                     ))}
                 </div>
             ) : (
                 data.map(product => {
-                    if (product.items.length > 5) {
+                    if (product.items.length > 5 && appWidth > 600) {
                         return (
                             <div className="mb-7.5" key={product.id}>
                                 <ProductsCarousel data={product} />
@@ -74,10 +77,10 @@ const ProductsList = () => {
                     } else {
                         return (
                             <div className="mb-7.5" key={product.id}>
-                                <h2 className="font-semibold text-2xl dark:text-white">
+                                <h2 className="font-semibold text-base sm:text-2xl dark:text-white">
                                     {product.label}
                                 </h2>
-                                <div className="mt-7 grid grid-cols-4 lg:grid-cols-5 gap-7.5">
+                                <div className="mt-3 sm:mt-7 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 sm:gap-5 md:gap-7.5">
                                     {product.items.map(item => (
                                         <ProductItem key={item.id} data={item} />
                                     ))}

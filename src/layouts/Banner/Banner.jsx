@@ -5,6 +5,10 @@ import { ChevronLeft, ChevronRight } from 'react-feather';
 import { Carousel } from 'react-responsive-carousel';
 
 const Banner = () => {
+    const appWidth = window.innerWidth;
+
+    if (appWidth < 600) return <></>;
+
     return (
         <div className="relative group">
             <Carousel

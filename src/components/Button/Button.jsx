@@ -24,12 +24,12 @@ const Button = ({
 }) => {
     // Base styles for the button
     const baseStyles =
-        'w-full text-sm px-4 h-10 uppercase rounded-md transition flex items-center justify-center';
+        'whitespace-nowrap w-full text-xs md:text-sm px-3 md:px-4 h-9 md:h-10 uppercase rounded-md font-semibold transition flex items-center justify-center';
 
     // Variant styles
     const variantStyles = {
         solid: 'bg-primary text-white ripple-primary',
-        surface: 'bg-transparent text-black border border-transparent ripple dark:text-white',
+        surface: 'bg-transparent text-primary border border-transparent ripple',
         outline: 'bg-transparent text-primary border border-primary ripple',
     };
 
