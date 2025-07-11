@@ -36,7 +36,7 @@ const OrderOnlinePage = () => {
                     </div>
                 </div>
                 <div className="md:w-[375px] xl:w-[400px] md:h-full">
-                    <div className="flex flex-col md:h-[650px] bg-white dark:bg-[#1b1b1b] rounded-md md:py-5 px-4">
+                    <div className="flex flex-col md:h-[650px] bg-white dark:bg-[#1b1b1b] rounded-md md:py-5 md:px-4">
                         <div className="mb-4 flex items-center justify-between">
                             <div className="hidden md:block text-base uppercase">Giỏ hàng</div>
                             <div className="hidden md:block w-fit">

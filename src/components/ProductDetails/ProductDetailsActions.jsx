@@ -97,7 +97,7 @@ const ProductDetailsActions = ({ data, error, isLoading, isValidating, onClose }
                     </>
                 )}
             </div>
-            <div className="p-5 bg-white dark:bg-dark dark:text-white flex items-center justify-between">
+            <div className="p-4 sm:p-5 bg-white dark:bg-dark dark:text-white flex items-center justify-between">
                 <div className="flex items-center">
                     <span className="hidden sm:inline-block text-base mr-3">Số lượng</span>
                     <div className="flex items-center">
@@ -122,7 +122,7 @@ const ProductDetailsActions = ({ data, error, isLoading, isValidating, onClose }
                         </button>
                     </div>
                 </div>
-                <div className="w-[260px]">
+                <div className="w-[200px] sm:w-[260px]">
                     <Button onClick={handleAddProduct}>
                         Thêm vào giỏ - {formatPrice(data?.price * quantity)} đ
                     </Button>
