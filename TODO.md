@@ -15,3 +15,5 @@ TODO: - Search function
     - Validate input in /booking-online and /order-online and Order history ✅
 
     - Promotion feature
+
+    - Bilingual Feature
