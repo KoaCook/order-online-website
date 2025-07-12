@@ -2,8 +2,8 @@
 
 import categories from '@/constants/categories';
 import clsx from 'clsx';
-import { useRef, useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
 import { X } from 'react-feather';
 
 const ALL_CATEGORY = { label: 'Tất cả', slug: '' };

@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import React from 'react';
+import React, { Suspense } from 'react';
 
 const ProductDetails = dynamic(() => import('@/components/ProductDetails'));
 const CartFixedBtn = dynamic(() => import('@/layouts/CartFixedBtn'));
@@ -7,7 +7,7 @@ const CartFixedBtn = dynamic(() => import('@/layouts/CartFixedBtn'));
 const HomePageLayout = ({ children }) => {
     return (
         <>
-            {children}
+            <Suspense>{children}</Suspense>
             <ProductDetails />
             <CartFixedBtn />
         </>

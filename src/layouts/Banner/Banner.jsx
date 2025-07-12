@@ -1,13 +1,15 @@
 'use client';
 
+import useBreakpoint from '@/hooks/useBreakpoint';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'react-feather';
 import { Carousel } from 'react-responsive-carousel';
 
 const Banner = () => {
-    const appWidth = window.innerWidth;
+    const { width } = useBreakpoint();
 
-    if (appWidth < 600) return <></>;
+    // Only render after client mount and if width is >= 600
+    if (typeof width !== 'number' || width < 600) return <></>;
 
     return (
         <div className="relative group">

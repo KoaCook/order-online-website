@@ -5,10 +5,11 @@ import { MapPin, Menu, X } from 'react-feather';
 import Drawer from 'react-modern-drawer';
 import MethodSwitcher from './MethodSwitcher';
 import LanguageSwitcher from './LanguageSwitcher';
+import useBreakpoint from '@/hooks/useBreakpoint';
 
 const MobileMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const appWidth = window.innerWidth;
+    const { width } = useBreakpoint();
 
     const toggleDrawer = () => {
         setIsOpen(prevState => !prevState);
@@ -24,7 +25,7 @@ const MobileMenu = () => {
                 <Menu />
             </button>
 
-            {appWidth < 960 && (
+            {width < 960 && (
                 <Drawer
                     open={isOpen}
                     onClose={toggleDrawer}

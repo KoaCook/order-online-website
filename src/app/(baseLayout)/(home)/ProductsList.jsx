@@ -7,13 +7,14 @@ import ErrorAlert from '@/components/ErrorAlert';
 import LoadingState from '@/components/LoadingState';
 import ProductItem, { ProductItemSkeleton } from '@/components/ProductItem';
 import ProductsCarousel from '@/components/ProductsCarousel';
+import useBreakpoint from '@/hooks/useBreakpoint';
 import { useSearchParams } from 'next/navigation';
 
 const ProductsList = () => {
     const searchParams = useSearchParams();
     const categorySlug = searchParams.get('category');
     const searchQuery = searchParams.get('search');
-    const appWidth = window.innerWidth;
+    const { width } = useBreakpoint();
 
     // Decide which hook to use based on query params
     let dataHook;
@@ -68,7 +69,7 @@ const ProductsList = () => {
                 </div>
             ) : (
                 data.map(product => {
-                    if (product.items.length > 5 && appWidth > 600) {
+                    if (product.items.length > 5 && width > 600) {
                         return (
                             <div className="mb-7.5" key={product.id}>
                                 <ProductsCarousel data={product} />

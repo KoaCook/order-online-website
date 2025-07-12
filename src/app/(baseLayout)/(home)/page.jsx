@@ -1,5 +1,3 @@
-'use server';
-
 import Banner from '@/layouts/Banner';
 import CategoriesNav from '@/layouts/CategoriesNav';
 import ProductsList from './ProductsList';
