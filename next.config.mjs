@@ -1,8 +1,10 @@
 export default {
-    experimental: {
-        optimizePackageImports: ['@chakra-ui/react'],
-    },
     images: {
-        domains: ['order-server.koacook.com'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'order-server.koacook.com',
+            },
+        ],
     },
 };
