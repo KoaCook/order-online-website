@@ -17,3 +17,5 @@ TODO: - Search function
     - Promotion feature
 
     - Bilingual Feature
+
+    - Opening hours and closing hours feature
